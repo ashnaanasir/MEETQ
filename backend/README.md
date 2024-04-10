@@ -1,0 +1,28 @@
+# 309_shenanigans
+
+Created the skeleton files.
+
+We have 3 apps: 
+- calendars
+- schedule
+- accounts
+  
+Each app has their associated:
+- models folder
+- views folder
+- serializers folder
+- admin.py file
+- urls.py file
+- apps.py file
+
+REST framework is installed under venv and added to installed apps in root directory's settings.py file.
+All the models are added to root directory's settings.py; however, you will need to register your models in your app's admin.py file (this is not necessary for the functionality of your APIs but will let you interact with the models using admin panel).
+
+In the OneOnOne Folder:
+1. source venv/bin/activate
+(create super user if haven't by: 
+python3 manage.py createsuperuser)
+2. python3 manage.py makemigrations
+3. python3 manage.py migrate
+4. python3 manage.py runserver
+
