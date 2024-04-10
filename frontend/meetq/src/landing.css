@@ -1,0 +1,3216 @@
+/*
+! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  /* 3 */
+  tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-feature-settings: normal;
+  /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+.border-cDarkGrey {
+  --tw-border-opacity: 1;
+  border-color: rgb(187 193 198 / var(--tw-border-opacity));
+}
+
+.border-cDarkGrey\/0 {
+  border-color: rgb(187 193 198 / 0);
+}
+
+.border-cDarkGrey\/10 {
+  border-color: rgb(187 193 198 / 0.1);
+}
+
+.border-cDarkGrey\/100 {
+  border-color: rgb(187 193 198 / 1);
+}
+
+.border-cDarkGrey\/15 {
+  border-color: rgb(187 193 198 / 0.15);
+}
+
+.border-cDarkGrey\/20 {
+  border-color: rgb(187 193 198 / 0.2);
+}
+
+.border-cDarkGrey\/25 {
+  border-color: rgb(187 193 198 / 0.25);
+}
+
+.border-cDarkGrey\/30 {
+  border-color: rgb(187 193 198 / 0.3);
+}
+
+.border-cDarkGrey\/35 {
+  border-color: rgb(187 193 198 / 0.35);
+}
+
+.border-cDarkGrey\/40 {
+  border-color: rgb(187 193 198 / 0.4);
+}
+
+.border-cDarkGrey\/45 {
+  border-color: rgb(187 193 198 / 0.45);
+}
+
+.border-cDarkGrey\/5 {
+  border-color: rgb(187 193 198 / 0.05);
+}
+
+.border-cDarkGrey\/50 {
+  border-color: rgb(187 193 198 / 0.5);
+}
+
+.border-cDarkGrey\/55 {
+  border-color: rgb(187 193 198 / 0.55);
+}
+
+.border-cDarkGrey\/60 {
+  border-color: rgb(187 193 198 / 0.6);
+}
+
+.border-cDarkGrey\/65 {
+  border-color: rgb(187 193 198 / 0.65);
+}
+
+.border-cDarkGrey\/70 {
+  border-color: rgb(187 193 198 / 0.7);
+}
+
+.border-cDarkGrey\/75 {
+  border-color: rgb(187 193 198 / 0.75);
+}
+
+.border-cDarkGrey\/80 {
+  border-color: rgb(187 193 198 / 0.8);
+}
+
+.border-cDarkGrey\/85 {
+  border-color: rgb(187 193 198 / 0.85);
+}
+
+.border-cDarkGrey\/90 {
+  border-color: rgb(187 193 198 / 0.9);
+}
+
+.border-cDarkGrey\/95 {
+  border-color: rgb(187 193 198 / 0.95);
+}
+
+.border-cDarkPurple {
+  --tw-border-opacity: 1;
+  border-color: rgb(84 61 123 / var(--tw-border-opacity));
+}
+
+.border-cDarkPurple\/0 {
+  border-color: rgb(84 61 123 / 0);
+}
+
+.border-cDarkPurple\/10 {
+  border-color: rgb(84 61 123 / 0.1);
+}
+
+.border-cDarkPurple\/100 {
+  border-color: rgb(84 61 123 / 1);
+}
+
+.border-cDarkPurple\/15 {
+  border-color: rgb(84 61 123 / 0.15);
+}
+
+.border-cDarkPurple\/20 {
+  border-color: rgb(84 61 123 / 0.2);
+}
+
+.border-cDarkPurple\/25 {
+  border-color: rgb(84 61 123 / 0.25);
+}
+
+.border-cDarkPurple\/30 {
+  border-color: rgb(84 61 123 / 0.3);
+}
+
+.border-cDarkPurple\/35 {
+  border-color: rgb(84 61 123 / 0.35);
+}
+
+.border-cDarkPurple\/40 {
+  border-color: rgb(84 61 123 / 0.4);
+}
+
+.border-cDarkPurple\/45 {
+  border-color: rgb(84 61 123 / 0.45);
+}
+
+.border-cDarkPurple\/5 {
+  border-color: rgb(84 61 123 / 0.05);
+}
+
+.border-cDarkPurple\/50 {
+  border-color: rgb(84 61 123 / 0.5);
+}
+
+.border-cDarkPurple\/55 {
+  border-color: rgb(84 61 123 / 0.55);
+}
+
+.border-cDarkPurple\/60 {
+  border-color: rgb(84 61 123 / 0.6);
+}
+
+.border-cDarkPurple\/65 {
+  border-color: rgb(84 61 123 / 0.65);
+}
+
+.border-cDarkPurple\/70 {
+  border-color: rgb(84 61 123 / 0.7);
+}
+
+.border-cDarkPurple\/75 {
+  border-color: rgb(84 61 123 / 0.75);
+}
+
+.border-cDarkPurple\/80 {
+  border-color: rgb(84 61 123 / 0.8);
+}
+
+.border-cDarkPurple\/85 {
+  border-color: rgb(84 61 123 / 0.85);
+}
+
+.border-cDarkPurple\/90 {
+  border-color: rgb(84 61 123 / 0.9);
+}
+
+.border-cDarkPurple\/95 {
+  border-color: rgb(84 61 123 / 0.95);
+}
+
+.border-cGrey {
+  --tw-border-opacity: 1;
+  border-color: rgb(249 249 249 / var(--tw-border-opacity));
+}
+
+.border-cGrey\/0 {
+  border-color: rgb(249 249 249 / 0);
+}
+
+.border-cGrey\/10 {
+  border-color: rgb(249 249 249 / 0.1);
+}
+
+.border-cGrey\/100 {
+  border-color: rgb(249 249 249 / 1);
+}
+
+.border-cGrey\/15 {
+  border-color: rgb(249 249 249 / 0.15);
+}
+
+.border-cGrey\/20 {
+  border-color: rgb(249 249 249 / 0.2);
+}
+
+.border-cGrey\/25 {
+  border-color: rgb(249 249 249 / 0.25);
+}
+
+.border-cGrey\/30 {
+  border-color: rgb(249 249 249 / 0.3);
+}
+
+.border-cGrey\/35 {
+  border-color: rgb(249 249 249 / 0.35);
+}
+
+.border-cGrey\/40 {
+  border-color: rgb(249 249 249 / 0.4);
+}
+
+.border-cGrey\/45 {
+  border-color: rgb(249 249 249 / 0.45);
+}
+
+.border-cGrey\/5 {
+  border-color: rgb(249 249 249 / 0.05);
+}
+
+.border-cGrey\/50 {
+  border-color: rgb(249 249 249 / 0.5);
+}
+
+.border-cGrey\/55 {
+  border-color: rgb(249 249 249 / 0.55);
+}
+
+.border-cGrey\/60 {
+  border-color: rgb(249 249 249 / 0.6);
+}
+
+.border-cGrey\/65 {
+  border-color: rgb(249 249 249 / 0.65);
+}
+
+.border-cGrey\/70 {
+  border-color: rgb(249 249 249 / 0.7);
+}
+
+.border-cGrey\/75 {
+  border-color: rgb(249 249 249 / 0.75);
+}
+
+.border-cGrey\/80 {
+  border-color: rgb(249 249 249 / 0.8);
+}
+
+.border-cGrey\/85 {
+  border-color: rgb(249 249 249 / 0.85);
+}
+
+.border-cGrey\/90 {
+  border-color: rgb(249 249 249 / 0.9);
+}
+
+.border-cGrey\/95 {
+  border-color: rgb(249 249 249 / 0.95);
+}
+
+.border-cGrey3 {
+  --tw-border-opacity: 1;
+  border-color: rgb(245 245 245 / var(--tw-border-opacity));
+}
+
+.border-cGrey3\/0 {
+  border-color: rgb(245 245 245 / 0);
+}
+
+.border-cGrey3\/10 {
+  border-color: rgb(245 245 245 / 0.1);
+}
+
+.border-cGrey3\/100 {
+  border-color: rgb(245 245 245 / 1);
+}
+
+.border-cGrey3\/15 {
+  border-color: rgb(245 245 245 / 0.15);
+}
+
+.border-cGrey3\/20 {
+  border-color: rgb(245 245 245 / 0.2);
+}
+
+.border-cGrey3\/25 {
+  border-color: rgb(245 245 245 / 0.25);
+}
+
+.border-cGrey3\/30 {
+  border-color: rgb(245 245 245 / 0.3);
+}
+
+.border-cGrey3\/35 {
+  border-color: rgb(245 245 245 / 0.35);
+}
+
+.border-cGrey3\/40 {
+  border-color: rgb(245 245 245 / 0.4);
+}
+
+.border-cGrey3\/45 {
+  border-color: rgb(245 245 245 / 0.45);
+}
+
+.border-cGrey3\/5 {
+  border-color: rgb(245 245 245 / 0.05);
+}
+
+.border-cGrey3\/50 {
+  border-color: rgb(245 245 245 / 0.5);
+}
+
+.border-cGrey3\/55 {
+  border-color: rgb(245 245 245 / 0.55);
+}
+
+.border-cGrey3\/60 {
+  border-color: rgb(245 245 245 / 0.6);
+}
+
+.border-cGrey3\/65 {
+  border-color: rgb(245 245 245 / 0.65);
+}
+
+.border-cGrey3\/70 {
+  border-color: rgb(245 245 245 / 0.7);
+}
+
+.border-cGrey3\/75 {
+  border-color: rgb(245 245 245 / 0.75);
+}
+
+.border-cGrey3\/80 {
+  border-color: rgb(245 245 245 / 0.8);
+}
+
+.border-cGrey3\/85 {
+  border-color: rgb(245 245 245 / 0.85);
+}
+
+.border-cGrey3\/90 {
+  border-color: rgb(245 245 245 / 0.9);
+}
+
+.border-cGrey3\/95 {
+  border-color: rgb(245 245 245 / 0.95);
+}
+
+.border-cPurple {
+  --tw-border-opacity: 1;
+  border-color: rgb(109 85 147 / var(--tw-border-opacity));
+}
+
+.border-cPurple\/0 {
+  border-color: rgb(109 85 147 / 0);
+}
+
+.border-cPurple\/10 {
+  border-color: rgb(109 85 147 / 0.1);
+}
+
+.border-cPurple\/100 {
+  border-color: rgb(109 85 147 / 1);
+}
+
+.border-cPurple\/15 {
+  border-color: rgb(109 85 147 / 0.15);
+}
+
+.border-cPurple\/20 {
+  border-color: rgb(109 85 147 / 0.2);
+}
+
+.border-cPurple\/25 {
+  border-color: rgb(109 85 147 / 0.25);
+}
+
+.border-cPurple\/30 {
+  border-color: rgb(109 85 147 / 0.3);
+}
+
+.border-cPurple\/35 {
+  border-color: rgb(109 85 147 / 0.35);
+}
+
+.border-cPurple\/40 {
+  border-color: rgb(109 85 147 / 0.4);
+}
+
+.border-cPurple\/45 {
+  border-color: rgb(109 85 147 / 0.45);
+}
+
+.border-cPurple\/5 {
+  border-color: rgb(109 85 147 / 0.05);
+}
+
+.border-cPurple\/50 {
+  border-color: rgb(109 85 147 / 0.5);
+}
+
+.border-cPurple\/55 {
+  border-color: rgb(109 85 147 / 0.55);
+}
+
+.border-cPurple\/60 {
+  border-color: rgb(109 85 147 / 0.6);
+}
+
+.border-cPurple\/65 {
+  border-color: rgb(109 85 147 / 0.65);
+}
+
+.border-cPurple\/70 {
+  border-color: rgb(109 85 147 / 0.7);
+}
+
+.border-cPurple\/75 {
+  border-color: rgb(109 85 147 / 0.75);
+}
+
+.border-cPurple\/80 {
+  border-color: rgb(109 85 147 / 0.8);
+}
+
+.border-cPurple\/85 {
+  border-color: rgb(109 85 147 / 0.85);
+}
+
+.border-cPurple\/90 {
+  border-color: rgb(109 85 147 / 0.9);
+}
+
+.border-cPurple\/95 {
+  border-color: rgb(109 85 147 / 0.95);
+}
+
+.bg-cDarkGrey {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 193 198 / var(--tw-bg-opacity));
+}
+
+.bg-cDarkGrey\/0 {
+  background-color: rgb(187 193 198 / 0);
+}
+
+.bg-cDarkGrey\/10 {
+  background-color: rgb(187 193 198 / 0.1);
+}
+
+.bg-cDarkGrey\/100 {
+  background-color: rgb(187 193 198 / 1);
+}
+
+.bg-cDarkGrey\/15 {
+  background-color: rgb(187 193 198 / 0.15);
+}
+
+.bg-cDarkGrey\/20 {
+  background-color: rgb(187 193 198 / 0.2);
+}
+
+.bg-cDarkGrey\/25 {
+  background-color: rgb(187 193 198 / 0.25);
+}
+
+.bg-cDarkGrey\/30 {
+  background-color: rgb(187 193 198 / 0.3);
+}
+
+.bg-cDarkGrey\/35 {
+  background-color: rgb(187 193 198 / 0.35);
+}
+
+.bg-cDarkGrey\/40 {
+  background-color: rgb(187 193 198 / 0.4);
+}
+
+.bg-cDarkGrey\/45 {
+  background-color: rgb(187 193 198 / 0.45);
+}
+
+.bg-cDarkGrey\/5 {
+  background-color: rgb(187 193 198 / 0.05);
+}
+
+.bg-cDarkGrey\/50 {
+  background-color: rgb(187 193 198 / 0.5);
+}
+
+.bg-cDarkGrey\/55 {
+  background-color: rgb(187 193 198 / 0.55);
+}
+
+.bg-cDarkGrey\/60 {
+  background-color: rgb(187 193 198 / 0.6);
+}
+
+.bg-cDarkGrey\/65 {
+  background-color: rgb(187 193 198 / 0.65);
+}
+
+.bg-cDarkGrey\/70 {
+  background-color: rgb(187 193 198 / 0.7);
+}
+
+.bg-cDarkGrey\/75 {
+  background-color: rgb(187 193 198 / 0.75);
+}
+
+.bg-cDarkGrey\/80 {
+  background-color: rgb(187 193 198 / 0.8);
+}
+
+.bg-cDarkGrey\/85 {
+  background-color: rgb(187 193 198 / 0.85);
+}
+
+.bg-cDarkGrey\/90 {
+  background-color: rgb(187 193 198 / 0.9);
+}
+
+.bg-cDarkGrey\/95 {
+  background-color: rgb(187 193 198 / 0.95);
+}
+
+.bg-cDarkPurple {
+  --tw-bg-opacity: 1;
+  background-color: rgb(84 61 123 / var(--tw-bg-opacity));
+}
+
+.bg-cDarkPurple\/0 {
+  background-color: rgb(84 61 123 / 0);
+}
+
+.bg-cDarkPurple\/10 {
+  background-color: rgb(84 61 123 / 0.1);
+}
+
+.bg-cDarkPurple\/100 {
+  background-color: rgb(84 61 123 / 1);
+}
+
+.bg-cDarkPurple\/15 {
+  background-color: rgb(84 61 123 / 0.15);
+}
+
+.bg-cDarkPurple\/20 {
+  background-color: rgb(84 61 123 / 0.2);
+}
+
+.bg-cDarkPurple\/25 {
+  background-color: rgb(84 61 123 / 0.25);
+}
+
+.bg-cDarkPurple\/30 {
+  background-color: rgb(84 61 123 / 0.3);
+}
+
+.bg-cDarkPurple\/35 {
+  background-color: rgb(84 61 123 / 0.35);
+}
+
+.bg-cDarkPurple\/40 {
+  background-color: rgb(84 61 123 / 0.4);
+}
+
+.bg-cDarkPurple\/45 {
+  background-color: rgb(84 61 123 / 0.45);
+}
+
+.bg-cDarkPurple\/5 {
+  background-color: rgb(84 61 123 / 0.05);
+}
+
+.bg-cDarkPurple\/50 {
+  background-color: rgb(84 61 123 / 0.5);
+}
+
+.bg-cDarkPurple\/55 {
+  background-color: rgb(84 61 123 / 0.55);
+}
+
+.bg-cDarkPurple\/60 {
+  background-color: rgb(84 61 123 / 0.6);
+}
+
+.bg-cDarkPurple\/65 {
+  background-color: rgb(84 61 123 / 0.65);
+}
+
+.bg-cDarkPurple\/70 {
+  background-color: rgb(84 61 123 / 0.7);
+}
+
+.bg-cDarkPurple\/75 {
+  background-color: rgb(84 61 123 / 0.75);
+}
+
+.bg-cDarkPurple\/80 {
+  background-color: rgb(84 61 123 / 0.8);
+}
+
+.bg-cDarkPurple\/85 {
+  background-color: rgb(84 61 123 / 0.85);
+}
+
+.bg-cDarkPurple\/90 {
+  background-color: rgb(84 61 123 / 0.9);
+}
+
+.bg-cDarkPurple\/95 {
+  background-color: rgb(84 61 123 / 0.95);
+}
+
+.bg-cGrey {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 249 249 / var(--tw-bg-opacity));
+}
+
+.bg-cGrey\/0 {
+  background-color: rgb(249 249 249 / 0);
+}
+
+.bg-cGrey\/10 {
+  background-color: rgb(249 249 249 / 0.1);
+}
+
+.bg-cGrey\/100 {
+  background-color: rgb(249 249 249 / 1);
+}
+
+.bg-cGrey\/15 {
+  background-color: rgb(249 249 249 / 0.15);
+}
+
+.bg-cGrey\/20 {
+  background-color: rgb(249 249 249 / 0.2);
+}
+
+.bg-cGrey\/25 {
+  background-color: rgb(249 249 249 / 0.25);
+}
+
+.bg-cGrey\/30 {
+  background-color: rgb(249 249 249 / 0.3);
+}
+
+.bg-cGrey\/35 {
+  background-color: rgb(249 249 249 / 0.35);
+}
+
+.bg-cGrey\/40 {
+  background-color: rgb(249 249 249 / 0.4);
+}
+
+.bg-cGrey\/45 {
+  background-color: rgb(249 249 249 / 0.45);
+}
+
+.bg-cGrey\/5 {
+  background-color: rgb(249 249 249 / 0.05);
+}
+
+.bg-cGrey\/50 {
+  background-color: rgb(249 249 249 / 0.5);
+}
+
+.bg-cGrey\/55 {
+  background-color: rgb(249 249 249 / 0.55);
+}
+
+.bg-cGrey\/60 {
+  background-color: rgb(249 249 249 / 0.6);
+}
+
+.bg-cGrey\/65 {
+  background-color: rgb(249 249 249 / 0.65);
+}
+
+.bg-cGrey\/70 {
+  background-color: rgb(249 249 249 / 0.7);
+}
+
+.bg-cGrey\/75 {
+  background-color: rgb(249 249 249 / 0.75);
+}
+
+.bg-cGrey\/80 {
+  background-color: rgb(249 249 249 / 0.8);
+}
+
+.bg-cGrey\/85 {
+  background-color: rgb(249 249 249 / 0.85);
+}
+
+.bg-cGrey\/90 {
+  background-color: rgb(249 249 249 / 0.9);
+}
+
+.bg-cGrey\/95 {
+  background-color: rgb(249 249 249 / 0.95);
+}
+
+.bg-cGrey3 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.bg-cGrey3\/0 {
+  background-color: rgb(245 245 245 / 0);
+}
+
+.bg-cGrey3\/10 {
+  background-color: rgb(245 245 245 / 0.1);
+}
+
+.bg-cGrey3\/100 {
+  background-color: rgb(245 245 245 / 1);
+}
+
+.bg-cGrey3\/15 {
+  background-color: rgb(245 245 245 / 0.15);
+}
+
+.bg-cGrey3\/20 {
+  background-color: rgb(245 245 245 / 0.2);
+}
+
+.bg-cGrey3\/25 {
+  background-color: rgb(245 245 245 / 0.25);
+}
+
+.bg-cGrey3\/30 {
+  background-color: rgb(245 245 245 / 0.3);
+}
+
+.bg-cGrey3\/35 {
+  background-color: rgb(245 245 245 / 0.35);
+}
+
+.bg-cGrey3\/40 {
+  background-color: rgb(245 245 245 / 0.4);
+}
+
+.bg-cGrey3\/45 {
+  background-color: rgb(245 245 245 / 0.45);
+}
+
+.bg-cGrey3\/5 {
+  background-color: rgb(245 245 245 / 0.05);
+}
+
+.bg-cGrey3\/50 {
+  background-color: rgb(245 245 245 / 0.5);
+}
+
+.bg-cGrey3\/55 {
+  background-color: rgb(245 245 245 / 0.55);
+}
+
+.bg-cGrey3\/60 {
+  background-color: rgb(245 245 245 / 0.6);
+}
+
+.bg-cGrey3\/65 {
+  background-color: rgb(245 245 245 / 0.65);
+}
+
+.bg-cGrey3\/70 {
+  background-color: rgb(245 245 245 / 0.7);
+}
+
+.bg-cGrey3\/75 {
+  background-color: rgb(245 245 245 / 0.75);
+}
+
+.bg-cGrey3\/80 {
+  background-color: rgb(245 245 245 / 0.8);
+}
+
+.bg-cGrey3\/85 {
+  background-color: rgb(245 245 245 / 0.85);
+}
+
+.bg-cGrey3\/90 {
+  background-color: rgb(245 245 245 / 0.9);
+}
+
+.bg-cGrey3\/95 {
+  background-color: rgb(245 245 245 / 0.95);
+}
+
+.bg-cPurple {
+  --tw-bg-opacity: 1;
+  background-color: rgb(109 85 147 / var(--tw-bg-opacity));
+}
+
+.bg-cPurple\/0 {
+  background-color: rgb(109 85 147 / 0);
+}
+
+.bg-cPurple\/10 {
+  background-color: rgb(109 85 147 / 0.1);
+}
+
+.bg-cPurple\/100 {
+  background-color: rgb(109 85 147 / 1);
+}
+
+.bg-cPurple\/15 {
+  background-color: rgb(109 85 147 / 0.15);
+}
+
+.bg-cPurple\/20 {
+  background-color: rgb(109 85 147 / 0.2);
+}
+
+.bg-cPurple\/25 {
+  background-color: rgb(109 85 147 / 0.25);
+}
+
+.bg-cPurple\/30 {
+  background-color: rgb(109 85 147 / 0.3);
+}
+
+.bg-cPurple\/35 {
+  background-color: rgb(109 85 147 / 0.35);
+}
+
+.bg-cPurple\/40 {
+  background-color: rgb(109 85 147 / 0.4);
+}
+
+.bg-cPurple\/45 {
+  background-color: rgb(109 85 147 / 0.45);
+}
+
+.bg-cPurple\/5 {
+  background-color: rgb(109 85 147 / 0.05);
+}
+
+.bg-cPurple\/50 {
+  background-color: rgb(109 85 147 / 0.5);
+}
+
+.bg-cPurple\/55 {
+  background-color: rgb(109 85 147 / 0.55);
+}
+
+.bg-cPurple\/60 {
+  background-color: rgb(109 85 147 / 0.6);
+}
+
+.bg-cPurple\/65 {
+  background-color: rgb(109 85 147 / 0.65);
+}
+
+.bg-cPurple\/70 {
+  background-color: rgb(109 85 147 / 0.7);
+}
+
+.bg-cPurple\/75 {
+  background-color: rgb(109 85 147 / 0.75);
+}
+
+.bg-cPurple\/80 {
+  background-color: rgb(109 85 147 / 0.8);
+}
+
+.bg-cPurple\/85 {
+  background-color: rgb(109 85 147 / 0.85);
+}
+
+.bg-cPurple\/90 {
+  background-color: rgb(109 85 147 / 0.9);
+}
+
+.bg-cPurple\/95 {
+  background-color: rgb(109 85 147 / 0.95);
+}
+
+.text-cDarkGrey {
+  --tw-text-opacity: 1;
+  color: rgb(187 193 198 / var(--tw-text-opacity));
+}
+
+.text-cDarkGrey\/0 {
+  color: rgb(187 193 198 / 0);
+}
+
+.text-cDarkGrey\/10 {
+  color: rgb(187 193 198 / 0.1);
+}
+
+.text-cDarkGrey\/100 {
+  color: rgb(187 193 198 / 1);
+}
+
+.text-cDarkGrey\/15 {
+  color: rgb(187 193 198 / 0.15);
+}
+
+.text-cDarkGrey\/20 {
+  color: rgb(187 193 198 / 0.2);
+}
+
+.text-cDarkGrey\/25 {
+  color: rgb(187 193 198 / 0.25);
+}
+
+.text-cDarkGrey\/30 {
+  color: rgb(187 193 198 / 0.3);
+}
+
+.text-cDarkGrey\/35 {
+  color: rgb(187 193 198 / 0.35);
+}
+
+.text-cDarkGrey\/40 {
+  color: rgb(187 193 198 / 0.4);
+}
+
+.text-cDarkGrey\/45 {
+  color: rgb(187 193 198 / 0.45);
+}
+
+.text-cDarkGrey\/5 {
+  color: rgb(187 193 198 / 0.05);
+}
+
+.text-cDarkGrey\/50 {
+  color: rgb(187 193 198 / 0.5);
+}
+
+.text-cDarkGrey\/55 {
+  color: rgb(187 193 198 / 0.55);
+}
+
+.text-cDarkGrey\/60 {
+  color: rgb(187 193 198 / 0.6);
+}
+
+.text-cDarkGrey\/65 {
+  color: rgb(187 193 198 / 0.65);
+}
+
+.text-cDarkGrey\/70 {
+  color: rgb(187 193 198 / 0.7);
+}
+
+.text-cDarkGrey\/75 {
+  color: rgb(187 193 198 / 0.75);
+}
+
+.text-cDarkGrey\/80 {
+  color: rgb(187 193 198 / 0.8);
+}
+
+.text-cDarkGrey\/85 {
+  color: rgb(187 193 198 / 0.85);
+}
+
+.text-cDarkGrey\/90 {
+  color: rgb(187 193 198 / 0.9);
+}
+
+.text-cDarkGrey\/95 {
+  color: rgb(187 193 198 / 0.95);
+}
+
+.text-cDarkPurple {
+  --tw-text-opacity: 1;
+  color: rgb(84 61 123 / var(--tw-text-opacity));
+}
+
+.text-cDarkPurple\/0 {
+  color: rgb(84 61 123 / 0);
+}
+
+.text-cDarkPurple\/10 {
+  color: rgb(84 61 123 / 0.1);
+}
+
+.text-cDarkPurple\/100 {
+  color: rgb(84 61 123 / 1);
+}
+
+.text-cDarkPurple\/15 {
+  color: rgb(84 61 123 / 0.15);
+}
+
+.text-cDarkPurple\/20 {
+  color: rgb(84 61 123 / 0.2);
+}
+
+.text-cDarkPurple\/25 {
+  color: rgb(84 61 123 / 0.25);
+}
+
+.text-cDarkPurple\/30 {
+  color: rgb(84 61 123 / 0.3);
+}
+
+.text-cDarkPurple\/35 {
+  color: rgb(84 61 123 / 0.35);
+}
+
+.text-cDarkPurple\/40 {
+  color: rgb(84 61 123 / 0.4);
+}
+
+.text-cDarkPurple\/45 {
+  color: rgb(84 61 123 / 0.45);
+}
+
+.text-cDarkPurple\/5 {
+  color: rgb(84 61 123 / 0.05);
+}
+
+.text-cDarkPurple\/50 {
+  color: rgb(84 61 123 / 0.5);
+}
+
+.text-cDarkPurple\/55 {
+  color: rgb(84 61 123 / 0.55);
+}
+
+.text-cDarkPurple\/60 {
+  color: rgb(84 61 123 / 0.6);
+}
+
+.text-cDarkPurple\/65 {
+  color: rgb(84 61 123 / 0.65);
+}
+
+.text-cDarkPurple\/70 {
+  color: rgb(84 61 123 / 0.7);
+}
+
+.text-cDarkPurple\/75 {
+  color: rgb(84 61 123 / 0.75);
+}
+
+.text-cDarkPurple\/80 {
+  color: rgb(84 61 123 / 0.8);
+}
+
+.text-cDarkPurple\/85 {
+  color: rgb(84 61 123 / 0.85);
+}
+
+.text-cDarkPurple\/90 {
+  color: rgb(84 61 123 / 0.9);
+}
+
+.text-cDarkPurple\/95 {
+  color: rgb(84 61 123 / 0.95);
+}
+
+.text-cGrey {
+  --tw-text-opacity: 1;
+  color: rgb(249 249 249 / var(--tw-text-opacity));
+}
+
+.text-cGrey\/0 {
+  color: rgb(249 249 249 / 0);
+}
+
+.text-cGrey\/10 {
+  color: rgb(249 249 249 / 0.1);
+}
+
+.text-cGrey\/100 {
+  color: rgb(249 249 249 / 1);
+}
+
+.text-cGrey\/15 {
+  color: rgb(249 249 249 / 0.15);
+}
+
+.text-cGrey\/20 {
+  color: rgb(249 249 249 / 0.2);
+}
+
+.text-cGrey\/25 {
+  color: rgb(249 249 249 / 0.25);
+}
+
+.text-cGrey\/30 {
+  color: rgb(249 249 249 / 0.3);
+}
+
+.text-cGrey\/35 {
+  color: rgb(249 249 249 / 0.35);
+}
+
+.text-cGrey\/40 {
+  color: rgb(249 249 249 / 0.4);
+}
+
+.text-cGrey\/45 {
+  color: rgb(249 249 249 / 0.45);
+}
+
+.text-cGrey\/5 {
+  color: rgb(249 249 249 / 0.05);
+}
+
+.text-cGrey\/50 {
+  color: rgb(249 249 249 / 0.5);
+}
+
+.text-cGrey\/55 {
+  color: rgb(249 249 249 / 0.55);
+}
+
+.text-cGrey\/60 {
+  color: rgb(249 249 249 / 0.6);
+}
+
+.text-cGrey\/65 {
+  color: rgb(249 249 249 / 0.65);
+}
+
+.text-cGrey\/70 {
+  color: rgb(249 249 249 / 0.7);
+}
+
+.text-cGrey\/75 {
+  color: rgb(249 249 249 / 0.75);
+}
+
+.text-cGrey\/80 {
+  color: rgb(249 249 249 / 0.8);
+}
+
+.text-cGrey\/85 {
+  color: rgb(249 249 249 / 0.85);
+}
+
+.text-cGrey\/90 {
+  color: rgb(249 249 249 / 0.9);
+}
+
+.text-cGrey\/95 {
+  color: rgb(249 249 249 / 0.95);
+}
+
+.text-cGrey3 {
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity));
+}
+
+.text-cGrey3\/0 {
+  color: rgb(245 245 245 / 0);
+}
+
+.text-cGrey3\/10 {
+  color: rgb(245 245 245 / 0.1);
+}
+
+.text-cGrey3\/100 {
+  color: rgb(245 245 245 / 1);
+}
+
+.text-cGrey3\/15 {
+  color: rgb(245 245 245 / 0.15);
+}
+
+.text-cGrey3\/20 {
+  color: rgb(245 245 245 / 0.2);
+}
+
+.text-cGrey3\/25 {
+  color: rgb(245 245 245 / 0.25);
+}
+
+.text-cGrey3\/30 {
+  color: rgb(245 245 245 / 0.3);
+}
+
+.text-cGrey3\/35 {
+  color: rgb(245 245 245 / 0.35);
+}
+
+.text-cGrey3\/40 {
+  color: rgb(245 245 245 / 0.4);
+}
+
+.text-cGrey3\/45 {
+  color: rgb(245 245 245 / 0.45);
+}
+
+.text-cGrey3\/5 {
+  color: rgb(245 245 245 / 0.05);
+}
+
+.text-cGrey3\/50 {
+  color: rgb(245 245 245 / 0.5);
+}
+
+.text-cGrey3\/55 {
+  color: rgb(245 245 245 / 0.55);
+}
+
+.text-cGrey3\/60 {
+  color: rgb(245 245 245 / 0.6);
+}
+
+.text-cGrey3\/65 {
+  color: rgb(245 245 245 / 0.65);
+}
+
+.text-cGrey3\/70 {
+  color: rgb(245 245 245 / 0.7);
+}
+
+.text-cGrey3\/75 {
+  color: rgb(245 245 245 / 0.75);
+}
+
+.text-cGrey3\/80 {
+  color: rgb(245 245 245 / 0.8);
+}
+
+.text-cGrey3\/85 {
+  color: rgb(245 245 245 / 0.85);
+}
+
+.text-cGrey3\/90 {
+  color: rgb(245 245 245 / 0.9);
+}
+
+.text-cGrey3\/95 {
+  color: rgb(245 245 245 / 0.95);
+}
+
+.text-cPurple {
+  --tw-text-opacity: 1;
+  color: rgb(109 85 147 / var(--tw-text-opacity));
+}
+
+.text-cPurple\/0 {
+  color: rgb(109 85 147 / 0);
+}
+
+.text-cPurple\/10 {
+  color: rgb(109 85 147 / 0.1);
+}
+
+.text-cPurple\/100 {
+  color: rgb(109 85 147 / 1);
+}
+
+.text-cPurple\/15 {
+  color: rgb(109 85 147 / 0.15);
+}
+
+.text-cPurple\/20 {
+  color: rgb(109 85 147 / 0.2);
+}
+
+.text-cPurple\/25 {
+  color: rgb(109 85 147 / 0.25);
+}
+
+.text-cPurple\/30 {
+  color: rgb(109 85 147 / 0.3);
+}
+
+.text-cPurple\/35 {
+  color: rgb(109 85 147 / 0.35);
+}
+
+.text-cPurple\/40 {
+  color: rgb(109 85 147 / 0.4);
+}
+
+.text-cPurple\/45 {
+  color: rgb(109 85 147 / 0.45);
+}
+
+.text-cPurple\/5 {
+  color: rgb(109 85 147 / 0.05);
+}
+
+.text-cPurple\/50 {
+  color: rgb(109 85 147 / 0.5);
+}
+
+.text-cPurple\/55 {
+  color: rgb(109 85 147 / 0.55);
+}
+
+.text-cPurple\/60 {
+  color: rgb(109 85 147 / 0.6);
+}
+
+.text-cPurple\/65 {
+  color: rgb(109 85 147 / 0.65);
+}
+
+.text-cPurple\/70 {
+  color: rgb(109 85 147 / 0.7);
+}
+
+.text-cPurple\/75 {
+  color: rgb(109 85 147 / 0.75);
+}
+
+.text-cPurple\/80 {
+  color: rgb(109 85 147 / 0.8);
+}
+
+.text-cPurple\/85 {
+  color: rgb(109 85 147 / 0.85);
+}
+
+.text-cPurple\/90 {
+  color: rgb(109 85 147 / 0.9);
+}
+
+.text-cPurple\/95 {
+  color: rgb(109 85 147 / 0.95);
+}
+
+.hover\:border-cDarkGrey:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(187 193 198 / var(--tw-border-opacity));
+}
+
+.hover\:border-cDarkGrey\/0:hover {
+  border-color: rgb(187 193 198 / 0);
+}
+
+.hover\:border-cDarkGrey\/10:hover {
+  border-color: rgb(187 193 198 / 0.1);
+}
+
+.hover\:border-cDarkGrey\/100:hover {
+  border-color: rgb(187 193 198 / 1);
+}
+
+.hover\:border-cDarkGrey\/15:hover {
+  border-color: rgb(187 193 198 / 0.15);
+}
+
+.hover\:border-cDarkGrey\/20:hover {
+  border-color: rgb(187 193 198 / 0.2);
+}
+
+.hover\:border-cDarkGrey\/25:hover {
+  border-color: rgb(187 193 198 / 0.25);
+}
+
+.hover\:border-cDarkGrey\/30:hover {
+  border-color: rgb(187 193 198 / 0.3);
+}
+
+.hover\:border-cDarkGrey\/35:hover {
+  border-color: rgb(187 193 198 / 0.35);
+}
+
+.hover\:border-cDarkGrey\/40:hover {
+  border-color: rgb(187 193 198 / 0.4);
+}
+
+.hover\:border-cDarkGrey\/45:hover {
+  border-color: rgb(187 193 198 / 0.45);
+}
+
+.hover\:border-cDarkGrey\/5:hover {
+  border-color: rgb(187 193 198 / 0.05);
+}
+
+.hover\:border-cDarkGrey\/50:hover {
+  border-color: rgb(187 193 198 / 0.5);
+}
+
+.hover\:border-cDarkGrey\/55:hover {
+  border-color: rgb(187 193 198 / 0.55);
+}
+
+.hover\:border-cDarkGrey\/60:hover {
+  border-color: rgb(187 193 198 / 0.6);
+}
+
+.hover\:border-cDarkGrey\/65:hover {
+  border-color: rgb(187 193 198 / 0.65);
+}
+
+.hover\:border-cDarkGrey\/70:hover {
+  border-color: rgb(187 193 198 / 0.7);
+}
+
+.hover\:border-cDarkGrey\/75:hover {
+  border-color: rgb(187 193 198 / 0.75);
+}
+
+.hover\:border-cDarkGrey\/80:hover {
+  border-color: rgb(187 193 198 / 0.8);
+}
+
+.hover\:border-cDarkGrey\/85:hover {
+  border-color: rgb(187 193 198 / 0.85);
+}
+
+.hover\:border-cDarkGrey\/90:hover {
+  border-color: rgb(187 193 198 / 0.9);
+}
+
+.hover\:border-cDarkGrey\/95:hover {
+  border-color: rgb(187 193 198 / 0.95);
+}
+
+.hover\:border-cDarkPurple:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(84 61 123 / var(--tw-border-opacity));
+}
+
+.hover\:border-cDarkPurple\/0:hover {
+  border-color: rgb(84 61 123 / 0);
+}
+
+.hover\:border-cDarkPurple\/10:hover {
+  border-color: rgb(84 61 123 / 0.1);
+}
+
+.hover\:border-cDarkPurple\/100:hover {
+  border-color: rgb(84 61 123 / 1);
+}
+
+.hover\:border-cDarkPurple\/15:hover {
+  border-color: rgb(84 61 123 / 0.15);
+}
+
+.hover\:border-cDarkPurple\/20:hover {
+  border-color: rgb(84 61 123 / 0.2);
+}
+
+.hover\:border-cDarkPurple\/25:hover {
+  border-color: rgb(84 61 123 / 0.25);
+}
+
+.hover\:border-cDarkPurple\/30:hover {
+  border-color: rgb(84 61 123 / 0.3);
+}
+
+.hover\:border-cDarkPurple\/35:hover {
+  border-color: rgb(84 61 123 / 0.35);
+}
+
+.hover\:border-cDarkPurple\/40:hover {
+  border-color: rgb(84 61 123 / 0.4);
+}
+
+.hover\:border-cDarkPurple\/45:hover {
+  border-color: rgb(84 61 123 / 0.45);
+}
+
+.hover\:border-cDarkPurple\/5:hover {
+  border-color: rgb(84 61 123 / 0.05);
+}
+
+.hover\:border-cDarkPurple\/50:hover {
+  border-color: rgb(84 61 123 / 0.5);
+}
+
+.hover\:border-cDarkPurple\/55:hover {
+  border-color: rgb(84 61 123 / 0.55);
+}
+
+.hover\:border-cDarkPurple\/60:hover {
+  border-color: rgb(84 61 123 / 0.6);
+}
+
+.hover\:border-cDarkPurple\/65:hover {
+  border-color: rgb(84 61 123 / 0.65);
+}
+
+.hover\:border-cDarkPurple\/70:hover {
+  border-color: rgb(84 61 123 / 0.7);
+}
+
+.hover\:border-cDarkPurple\/75:hover {
+  border-color: rgb(84 61 123 / 0.75);
+}
+
+.hover\:border-cDarkPurple\/80:hover {
+  border-color: rgb(84 61 123 / 0.8);
+}
+
+.hover\:border-cDarkPurple\/85:hover {
+  border-color: rgb(84 61 123 / 0.85);
+}
+
+.hover\:border-cDarkPurple\/90:hover {
+  border-color: rgb(84 61 123 / 0.9);
+}
+
+.hover\:border-cDarkPurple\/95:hover {
+  border-color: rgb(84 61 123 / 0.95);
+}
+
+.hover\:border-cGrey:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(249 249 249 / var(--tw-border-opacity));
+}
+
+.hover\:border-cGrey\/0:hover {
+  border-color: rgb(249 249 249 / 0);
+}
+
+.hover\:border-cGrey\/10:hover {
+  border-color: rgb(249 249 249 / 0.1);
+}
+
+.hover\:border-cGrey\/100:hover {
+  border-color: rgb(249 249 249 / 1);
+}
+
+.hover\:border-cGrey\/15:hover {
+  border-color: rgb(249 249 249 / 0.15);
+}
+
+.hover\:border-cGrey\/20:hover {
+  border-color: rgb(249 249 249 / 0.2);
+}
+
+.hover\:border-cGrey\/25:hover {
+  border-color: rgb(249 249 249 / 0.25);
+}
+
+.hover\:border-cGrey\/30:hover {
+  border-color: rgb(249 249 249 / 0.3);
+}
+
+.hover\:border-cGrey\/35:hover {
+  border-color: rgb(249 249 249 / 0.35);
+}
+
+.hover\:border-cGrey\/40:hover {
+  border-color: rgb(249 249 249 / 0.4);
+}
+
+.hover\:border-cGrey\/45:hover {
+  border-color: rgb(249 249 249 / 0.45);
+}
+
+.hover\:border-cGrey\/5:hover {
+  border-color: rgb(249 249 249 / 0.05);
+}
+
+.hover\:border-cGrey\/50:hover {
+  border-color: rgb(249 249 249 / 0.5);
+}
+
+.hover\:border-cGrey\/55:hover {
+  border-color: rgb(249 249 249 / 0.55);
+}
+
+.hover\:border-cGrey\/60:hover {
+  border-color: rgb(249 249 249 / 0.6);
+}
+
+.hover\:border-cGrey\/65:hover {
+  border-color: rgb(249 249 249 / 0.65);
+}
+
+.hover\:border-cGrey\/70:hover {
+  border-color: rgb(249 249 249 / 0.7);
+}
+
+.hover\:border-cGrey\/75:hover {
+  border-color: rgb(249 249 249 / 0.75);
+}
+
+.hover\:border-cGrey\/80:hover {
+  border-color: rgb(249 249 249 / 0.8);
+}
+
+.hover\:border-cGrey\/85:hover {
+  border-color: rgb(249 249 249 / 0.85);
+}
+
+.hover\:border-cGrey\/90:hover {
+  border-color: rgb(249 249 249 / 0.9);
+}
+
+.hover\:border-cGrey\/95:hover {
+  border-color: rgb(249 249 249 / 0.95);
+}
+
+.hover\:border-cGrey3:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(245 245 245 / var(--tw-border-opacity));
+}
+
+.hover\:border-cGrey3\/0:hover {
+  border-color: rgb(245 245 245 / 0);
+}
+
+.hover\:border-cGrey3\/10:hover {
+  border-color: rgb(245 245 245 / 0.1);
+}
+
+.hover\:border-cGrey3\/100:hover {
+  border-color: rgb(245 245 245 / 1);
+}
+
+.hover\:border-cGrey3\/15:hover {
+  border-color: rgb(245 245 245 / 0.15);
+}
+
+.hover\:border-cGrey3\/20:hover {
+  border-color: rgb(245 245 245 / 0.2);
+}
+
+.hover\:border-cGrey3\/25:hover {
+  border-color: rgb(245 245 245 / 0.25);
+}
+
+.hover\:border-cGrey3\/30:hover {
+  border-color: rgb(245 245 245 / 0.3);
+}
+
+.hover\:border-cGrey3\/35:hover {
+  border-color: rgb(245 245 245 / 0.35);
+}
+
+.hover\:border-cGrey3\/40:hover {
+  border-color: rgb(245 245 245 / 0.4);
+}
+
+.hover\:border-cGrey3\/45:hover {
+  border-color: rgb(245 245 245 / 0.45);
+}
+
+.hover\:border-cGrey3\/5:hover {
+  border-color: rgb(245 245 245 / 0.05);
+}
+
+.hover\:border-cGrey3\/50:hover {
+  border-color: rgb(245 245 245 / 0.5);
+}
+
+.hover\:border-cGrey3\/55:hover {
+  border-color: rgb(245 245 245 / 0.55);
+}
+
+.hover\:border-cGrey3\/60:hover {
+  border-color: rgb(245 245 245 / 0.6);
+}
+
+.hover\:border-cGrey3\/65:hover {
+  border-color: rgb(245 245 245 / 0.65);
+}
+
+.hover\:border-cGrey3\/70:hover {
+  border-color: rgb(245 245 245 / 0.7);
+}
+
+.hover\:border-cGrey3\/75:hover {
+  border-color: rgb(245 245 245 / 0.75);
+}
+
+.hover\:border-cGrey3\/80:hover {
+  border-color: rgb(245 245 245 / 0.8);
+}
+
+.hover\:border-cGrey3\/85:hover {
+  border-color: rgb(245 245 245 / 0.85);
+}
+
+.hover\:border-cGrey3\/90:hover {
+  border-color: rgb(245 245 245 / 0.9);
+}
+
+.hover\:border-cGrey3\/95:hover {
+  border-color: rgb(245 245 245 / 0.95);
+}
+
+.hover\:border-cPurple:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(109 85 147 / var(--tw-border-opacity));
+}
+
+.hover\:border-cPurple\/0:hover {
+  border-color: rgb(109 85 147 / 0);
+}
+
+.hover\:border-cPurple\/10:hover {
+  border-color: rgb(109 85 147 / 0.1);
+}
+
+.hover\:border-cPurple\/100:hover {
+  border-color: rgb(109 85 147 / 1);
+}
+
+.hover\:border-cPurple\/15:hover {
+  border-color: rgb(109 85 147 / 0.15);
+}
+
+.hover\:border-cPurple\/20:hover {
+  border-color: rgb(109 85 147 / 0.2);
+}
+
+.hover\:border-cPurple\/25:hover {
+  border-color: rgb(109 85 147 / 0.25);
+}
+
+.hover\:border-cPurple\/30:hover {
+  border-color: rgb(109 85 147 / 0.3);
+}
+
+.hover\:border-cPurple\/35:hover {
+  border-color: rgb(109 85 147 / 0.35);
+}
+
+.hover\:border-cPurple\/40:hover {
+  border-color: rgb(109 85 147 / 0.4);
+}
+
+.hover\:border-cPurple\/45:hover {
+  border-color: rgb(109 85 147 / 0.45);
+}
+
+.hover\:border-cPurple\/5:hover {
+  border-color: rgb(109 85 147 / 0.05);
+}
+
+.hover\:border-cPurple\/50:hover {
+  border-color: rgb(109 85 147 / 0.5);
+}
+
+.hover\:border-cPurple\/55:hover {
+  border-color: rgb(109 85 147 / 0.55);
+}
+
+.hover\:border-cPurple\/60:hover {
+  border-color: rgb(109 85 147 / 0.6);
+}
+
+.hover\:border-cPurple\/65:hover {
+  border-color: rgb(109 85 147 / 0.65);
+}
+
+.hover\:border-cPurple\/70:hover {
+  border-color: rgb(109 85 147 / 0.7);
+}
+
+.hover\:border-cPurple\/75:hover {
+  border-color: rgb(109 85 147 / 0.75);
+}
+
+.hover\:border-cPurple\/80:hover {
+  border-color: rgb(109 85 147 / 0.8);
+}
+
+.hover\:border-cPurple\/85:hover {
+  border-color: rgb(109 85 147 / 0.85);
+}
+
+.hover\:border-cPurple\/90:hover {
+  border-color: rgb(109 85 147 / 0.9);
+}
+
+.hover\:border-cPurple\/95:hover {
+  border-color: rgb(109 85 147 / 0.95);
+}
+
+.hover\:bg-cDarkGrey:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 193 198 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-cDarkGrey\/0:hover {
+  background-color: rgb(187 193 198 / 0);
+}
+
+.hover\:bg-cDarkGrey\/10:hover {
+  background-color: rgb(187 193 198 / 0.1);
+}
+
+.hover\:bg-cDarkGrey\/100:hover {
+  background-color: rgb(187 193 198 / 1);
+}
+
+.hover\:bg-cDarkGrey\/15:hover {
+  background-color: rgb(187 193 198 / 0.15);
+}
+
+.hover\:bg-cDarkGrey\/20:hover {
+  background-color: rgb(187 193 198 / 0.2);
+}
+
+.hover\:bg-cDarkGrey\/25:hover {
+  background-color: rgb(187 193 198 / 0.25);
+}
+
+.hover\:bg-cDarkGrey\/30:hover {
+  background-color: rgb(187 193 198 / 0.3);
+}
+
+.hover\:bg-cDarkGrey\/35:hover {
+  background-color: rgb(187 193 198 / 0.35);
+}
+
+.hover\:bg-cDarkGrey\/40:hover {
+  background-color: rgb(187 193 198 / 0.4);
+}
+
+.hover\:bg-cDarkGrey\/45:hover {
+  background-color: rgb(187 193 198 / 0.45);
+}
+
+.hover\:bg-cDarkGrey\/5:hover {
+  background-color: rgb(187 193 198 / 0.05);
+}
+
+.hover\:bg-cDarkGrey\/50:hover {
+  background-color: rgb(187 193 198 / 0.5);
+}
+
+.hover\:bg-cDarkGrey\/55:hover {
+  background-color: rgb(187 193 198 / 0.55);
+}
+
+.hover\:bg-cDarkGrey\/60:hover {
+  background-color: rgb(187 193 198 / 0.6);
+}
+
+.hover\:bg-cDarkGrey\/65:hover {
+  background-color: rgb(187 193 198 / 0.65);
+}
+
+.hover\:bg-cDarkGrey\/70:hover {
+  background-color: rgb(187 193 198 / 0.7);
+}
+
+.hover\:bg-cDarkGrey\/75:hover {
+  background-color: rgb(187 193 198 / 0.75);
+}
+
+.hover\:bg-cDarkGrey\/80:hover {
+  background-color: rgb(187 193 198 / 0.8);
+}
+
+.hover\:bg-cDarkGrey\/85:hover {
+  background-color: rgb(187 193 198 / 0.85);
+}
+
+.hover\:bg-cDarkGrey\/90:hover {
+  background-color: rgb(187 193 198 / 0.9);
+}
+
+.hover\:bg-cDarkGrey\/95:hover {
+  background-color: rgb(187 193 198 / 0.95);
+}
+
+.hover\:bg-cDarkPurple:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(84 61 123 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-cDarkPurple\/0:hover {
+  background-color: rgb(84 61 123 / 0);
+}
+
+.hover\:bg-cDarkPurple\/10:hover {
+  background-color: rgb(84 61 123 / 0.1);
+}
+
+.hover\:bg-cDarkPurple\/100:hover {
+  background-color: rgb(84 61 123 / 1);
+}
+
+.hover\:bg-cDarkPurple\/15:hover {
+  background-color: rgb(84 61 123 / 0.15);
+}
+
+.hover\:bg-cDarkPurple\/20:hover {
+  background-color: rgb(84 61 123 / 0.2);
+}
+
+.hover\:bg-cDarkPurple\/25:hover {
+  background-color: rgb(84 61 123 / 0.25);
+}
+
+.hover\:bg-cDarkPurple\/30:hover {
+  background-color: rgb(84 61 123 / 0.3);
+}
+
+.hover\:bg-cDarkPurple\/35:hover {
+  background-color: rgb(84 61 123 / 0.35);
+}
+
+.hover\:bg-cDarkPurple\/40:hover {
+  background-color: rgb(84 61 123 / 0.4);
+}
+
+.hover\:bg-cDarkPurple\/45:hover {
+  background-color: rgb(84 61 123 / 0.45);
+}
+
+.hover\:bg-cDarkPurple\/5:hover {
+  background-color: rgb(84 61 123 / 0.05);
+}
+
+.hover\:bg-cDarkPurple\/50:hover {
+  background-color: rgb(84 61 123 / 0.5);
+}
+
+.hover\:bg-cDarkPurple\/55:hover {
+  background-color: rgb(84 61 123 / 0.55);
+}
+
+.hover\:bg-cDarkPurple\/60:hover {
+  background-color: rgb(84 61 123 / 0.6);
+}
+
+.hover\:bg-cDarkPurple\/65:hover {
+  background-color: rgb(84 61 123 / 0.65);
+}
+
+.hover\:bg-cDarkPurple\/70:hover {
+  background-color: rgb(84 61 123 / 0.7);
+}
+
+.hover\:bg-cDarkPurple\/75:hover {
+  background-color: rgb(84 61 123 / 0.75);
+}
+
+.hover\:bg-cDarkPurple\/80:hover {
+  background-color: rgb(84 61 123 / 0.8);
+}
+
+.hover\:bg-cDarkPurple\/85:hover {
+  background-color: rgb(84 61 123 / 0.85);
+}
+
+.hover\:bg-cDarkPurple\/90:hover {
+  background-color: rgb(84 61 123 / 0.9);
+}
+
+.hover\:bg-cDarkPurple\/95:hover {
+  background-color: rgb(84 61 123 / 0.95);
+}
+
+.hover\:bg-cGrey:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 249 249 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-cGrey\/0:hover {
+  background-color: rgb(249 249 249 / 0);
+}
+
+.hover\:bg-cGrey\/10:hover {
+  background-color: rgb(249 249 249 / 0.1);
+}
+
+.hover\:bg-cGrey\/100:hover {
+  background-color: rgb(249 249 249 / 1);
+}
+
+.hover\:bg-cGrey\/15:hover {
+  background-color: rgb(249 249 249 / 0.15);
+}
+
+.hover\:bg-cGrey\/20:hover {
+  background-color: rgb(249 249 249 / 0.2);
+}
+
+.hover\:bg-cGrey\/25:hover {
+  background-color: rgb(249 249 249 / 0.25);
+}
+
+.hover\:bg-cGrey\/30:hover {
+  background-color: rgb(249 249 249 / 0.3);
+}
+
+.hover\:bg-cGrey\/35:hover {
+  background-color: rgb(249 249 249 / 0.35);
+}
+
+.hover\:bg-cGrey\/40:hover {
+  background-color: rgb(249 249 249 / 0.4);
+}
+
+.hover\:bg-cGrey\/45:hover {
+  background-color: rgb(249 249 249 / 0.45);
+}
+
+.hover\:bg-cGrey\/5:hover {
+  background-color: rgb(249 249 249 / 0.05);
+}
+
+.hover\:bg-cGrey\/50:hover {
+  background-color: rgb(249 249 249 / 0.5);
+}
+
+.hover\:bg-cGrey\/55:hover {
+  background-color: rgb(249 249 249 / 0.55);
+}
+
+.hover\:bg-cGrey\/60:hover {
+  background-color: rgb(249 249 249 / 0.6);
+}
+
+.hover\:bg-cGrey\/65:hover {
+  background-color: rgb(249 249 249 / 0.65);
+}
+
+.hover\:bg-cGrey\/70:hover {
+  background-color: rgb(249 249 249 / 0.7);
+}
+
+.hover\:bg-cGrey\/75:hover {
+  background-color: rgb(249 249 249 / 0.75);
+}
+
+.hover\:bg-cGrey\/80:hover {
+  background-color: rgb(249 249 249 / 0.8);
+}
+
+.hover\:bg-cGrey\/85:hover {
+  background-color: rgb(249 249 249 / 0.85);
+}
+
+.hover\:bg-cGrey\/90:hover {
+  background-color: rgb(249 249 249 / 0.9);
+}
+
+.hover\:bg-cGrey\/95:hover {
+  background-color: rgb(249 249 249 / 0.95);
+}
+
+.hover\:bg-cGrey3:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-cGrey3\/0:hover {
+  background-color: rgb(245 245 245 / 0);
+}
+
+.hover\:bg-cGrey3\/10:hover {
+  background-color: rgb(245 245 245 / 0.1);
+}
+
+.hover\:bg-cGrey3\/100:hover {
+  background-color: rgb(245 245 245 / 1);
+}
+
+.hover\:bg-cGrey3\/15:hover {
+  background-color: rgb(245 245 245 / 0.15);
+}
+
+.hover\:bg-cGrey3\/20:hover {
+  background-color: rgb(245 245 245 / 0.2);
+}
+
+.hover\:bg-cGrey3\/25:hover {
+  background-color: rgb(245 245 245 / 0.25);
+}
+
+.hover\:bg-cGrey3\/30:hover {
+  background-color: rgb(245 245 245 / 0.3);
+}
+
+.hover\:bg-cGrey3\/35:hover {
+  background-color: rgb(245 245 245 / 0.35);
+}
+
+.hover\:bg-cGrey3\/40:hover {
+  background-color: rgb(245 245 245 / 0.4);
+}
+
+.hover\:bg-cGrey3\/45:hover {
+  background-color: rgb(245 245 245 / 0.45);
+}
+
+.hover\:bg-cGrey3\/5:hover {
+  background-color: rgb(245 245 245 / 0.05);
+}
+
+.hover\:bg-cGrey3\/50:hover {
+  background-color: rgb(245 245 245 / 0.5);
+}
+
+.hover\:bg-cGrey3\/55:hover {
+  background-color: rgb(245 245 245 / 0.55);
+}
+
+.hover\:bg-cGrey3\/60:hover {
+  background-color: rgb(245 245 245 / 0.6);
+}
+
+.hover\:bg-cGrey3\/65:hover {
+  background-color: rgb(245 245 245 / 0.65);
+}
+
+.hover\:bg-cGrey3\/70:hover {
+  background-color: rgb(245 245 245 / 0.7);
+}
+
+.hover\:bg-cGrey3\/75:hover {
+  background-color: rgb(245 245 245 / 0.75);
+}
+
+.hover\:bg-cGrey3\/80:hover {
+  background-color: rgb(245 245 245 / 0.8);
+}
+
+.hover\:bg-cGrey3\/85:hover {
+  background-color: rgb(245 245 245 / 0.85);
+}
+
+.hover\:bg-cGrey3\/90:hover {
+  background-color: rgb(245 245 245 / 0.9);
+}
+
+.hover\:bg-cGrey3\/95:hover {
+  background-color: rgb(245 245 245 / 0.95);
+}
+
+.hover\:bg-cPurple:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(109 85 147 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-cPurple\/0:hover {
+  background-color: rgb(109 85 147 / 0);
+}
+
+.hover\:bg-cPurple\/10:hover {
+  background-color: rgb(109 85 147 / 0.1);
+}
+
+.hover\:bg-cPurple\/100:hover {
+  background-color: rgb(109 85 147 / 1);
+}
+
+.hover\:bg-cPurple\/15:hover {
+  background-color: rgb(109 85 147 / 0.15);
+}
+
+.hover\:bg-cPurple\/20:hover {
+  background-color: rgb(109 85 147 / 0.2);
+}
+
+.hover\:bg-cPurple\/25:hover {
+  background-color: rgb(109 85 147 / 0.25);
+}
+
+.hover\:bg-cPurple\/30:hover {
+  background-color: rgb(109 85 147 / 0.3);
+}
+
+.hover\:bg-cPurple\/35:hover {
+  background-color: rgb(109 85 147 / 0.35);
+}
+
+.hover\:bg-cPurple\/40:hover {
+  background-color: rgb(109 85 147 / 0.4);
+}
+
+.hover\:bg-cPurple\/45:hover {
+  background-color: rgb(109 85 147 / 0.45);
+}
+
+.hover\:bg-cPurple\/5:hover {
+  background-color: rgb(109 85 147 / 0.05);
+}
+
+.hover\:bg-cPurple\/50:hover {
+  background-color: rgb(109 85 147 / 0.5);
+}
+
+.hover\:bg-cPurple\/55:hover {
+  background-color: rgb(109 85 147 / 0.55);
+}
+
+.hover\:bg-cPurple\/60:hover {
+  background-color: rgb(109 85 147 / 0.6);
+}
+
+.hover\:bg-cPurple\/65:hover {
+  background-color: rgb(109 85 147 / 0.65);
+}
+
+.hover\:bg-cPurple\/70:hover {
+  background-color: rgb(109 85 147 / 0.7);
+}
+
+.hover\:bg-cPurple\/75:hover {
+  background-color: rgb(109 85 147 / 0.75);
+}
+
+.hover\:bg-cPurple\/80:hover {
+  background-color: rgb(109 85 147 / 0.8);
+}
+
+.hover\:bg-cPurple\/85:hover {
+  background-color: rgb(109 85 147 / 0.85);
+}
+
+.hover\:bg-cPurple\/90:hover {
+  background-color: rgb(109 85 147 / 0.9);
+}
+
+.hover\:bg-cPurple\/95:hover {
+  background-color: rgb(109 85 147 / 0.95);
+}
+
+.hover\:text-cDarkGrey:hover {
+  --tw-text-opacity: 1;
+  color: rgb(187 193 198 / var(--tw-text-opacity));
+}
+
+.hover\:text-cDarkGrey\/0:hover {
+  color: rgb(187 193 198 / 0);
+}
+
+.hover\:text-cDarkGrey\/10:hover {
+  color: rgb(187 193 198 / 0.1);
+}
+
+.hover\:text-cDarkGrey\/100:hover {
+  color: rgb(187 193 198 / 1);
+}
+
+.hover\:text-cDarkGrey\/15:hover {
+  color: rgb(187 193 198 / 0.15);
+}
+
+.hover\:text-cDarkGrey\/20:hover {
+  color: rgb(187 193 198 / 0.2);
+}
+
+.hover\:text-cDarkGrey\/25:hover {
+  color: rgb(187 193 198 / 0.25);
+}
+
+.hover\:text-cDarkGrey\/30:hover {
+  color: rgb(187 193 198 / 0.3);
+}
+
+.hover\:text-cDarkGrey\/35:hover {
+  color: rgb(187 193 198 / 0.35);
+}
+
+.hover\:text-cDarkGrey\/40:hover {
+  color: rgb(187 193 198 / 0.4);
+}
+
+.hover\:text-cDarkGrey\/45:hover {
+  color: rgb(187 193 198 / 0.45);
+}
+
+.hover\:text-cDarkGrey\/5:hover {
+  color: rgb(187 193 198 / 0.05);
+}
+
+.hover\:text-cDarkGrey\/50:hover {
+  color: rgb(187 193 198 / 0.5);
+}
+
+.hover\:text-cDarkGrey\/55:hover {
+  color: rgb(187 193 198 / 0.55);
+}
+
+.hover\:text-cDarkGrey\/60:hover {
+  color: rgb(187 193 198 / 0.6);
+}
+
+.hover\:text-cDarkGrey\/65:hover {
+  color: rgb(187 193 198 / 0.65);
+}
+
+.hover\:text-cDarkGrey\/70:hover {
+  color: rgb(187 193 198 / 0.7);
+}
+
+.hover\:text-cDarkGrey\/75:hover {
+  color: rgb(187 193 198 / 0.75);
+}
+
+.hover\:text-cDarkGrey\/80:hover {
+  color: rgb(187 193 198 / 0.8);
+}
+
+.hover\:text-cDarkGrey\/85:hover {
+  color: rgb(187 193 198 / 0.85);
+}
+
+.hover\:text-cDarkGrey\/90:hover {
+  color: rgb(187 193 198 / 0.9);
+}
+
+.hover\:text-cDarkGrey\/95:hover {
+  color: rgb(187 193 198 / 0.95);
+}
+
+.hover\:text-cDarkPurple:hover {
+  --tw-text-opacity: 1;
+  color: rgb(84 61 123 / var(--tw-text-opacity));
+}
+
+.hover\:text-cDarkPurple\/0:hover {
+  color: rgb(84 61 123 / 0);
+}
+
+.hover\:text-cDarkPurple\/10:hover {
+  color: rgb(84 61 123 / 0.1);
+}
+
+.hover\:text-cDarkPurple\/100:hover {
+  color: rgb(84 61 123 / 1);
+}
+
+.hover\:text-cDarkPurple\/15:hover {
+  color: rgb(84 61 123 / 0.15);
+}
+
+.hover\:text-cDarkPurple\/20:hover {
+  color: rgb(84 61 123 / 0.2);
+}
+
+.hover\:text-cDarkPurple\/25:hover {
+  color: rgb(84 61 123 / 0.25);
+}
+
+.hover\:text-cDarkPurple\/30:hover {
+  color: rgb(84 61 123 / 0.3);
+}
+
+.hover\:text-cDarkPurple\/35:hover {
+  color: rgb(84 61 123 / 0.35);
+}
+
+.hover\:text-cDarkPurple\/40:hover {
+  color: rgb(84 61 123 / 0.4);
+}
+
+.hover\:text-cDarkPurple\/45:hover {
+  color: rgb(84 61 123 / 0.45);
+}
+
+.hover\:text-cDarkPurple\/5:hover {
+  color: rgb(84 61 123 / 0.05);
+}
+
+.hover\:text-cDarkPurple\/50:hover {
+  color: rgb(84 61 123 / 0.5);
+}
+
+.hover\:text-cDarkPurple\/55:hover {
+  color: rgb(84 61 123 / 0.55);
+}
+
+.hover\:text-cDarkPurple\/60:hover {
+  color: rgb(84 61 123 / 0.6);
+}
+
+.hover\:text-cDarkPurple\/65:hover {
+  color: rgb(84 61 123 / 0.65);
+}
+
+.hover\:text-cDarkPurple\/70:hover {
+  color: rgb(84 61 123 / 0.7);
+}
+
+.hover\:text-cDarkPurple\/75:hover {
+  color: rgb(84 61 123 / 0.75);
+}
+
+.hover\:text-cDarkPurple\/80:hover {
+  color: rgb(84 61 123 / 0.8);
+}
+
+.hover\:text-cDarkPurple\/85:hover {
+  color: rgb(84 61 123 / 0.85);
+}
+
+.hover\:text-cDarkPurple\/90:hover {
+  color: rgb(84 61 123 / 0.9);
+}
+
+.hover\:text-cDarkPurple\/95:hover {
+  color: rgb(84 61 123 / 0.95);
+}
+
+.hover\:text-cGrey:hover {
+  --tw-text-opacity: 1;
+  color: rgb(249 249 249 / var(--tw-text-opacity));
+}
+
+.hover\:text-cGrey\/0:hover {
+  color: rgb(249 249 249 / 0);
+}
+
+.hover\:text-cGrey\/10:hover {
+  color: rgb(249 249 249 / 0.1);
+}
+
+.hover\:text-cGrey\/100:hover {
+  color: rgb(249 249 249 / 1);
+}
+
+.hover\:text-cGrey\/15:hover {
+  color: rgb(249 249 249 / 0.15);
+}
+
+.hover\:text-cGrey\/20:hover {
+  color: rgb(249 249 249 / 0.2);
+}
+
+.hover\:text-cGrey\/25:hover {
+  color: rgb(249 249 249 / 0.25);
+}
+
+.hover\:text-cGrey\/30:hover {
+  color: rgb(249 249 249 / 0.3);
+}
+
+.hover\:text-cGrey\/35:hover {
+  color: rgb(249 249 249 / 0.35);
+}
+
+.hover\:text-cGrey\/40:hover {
+  color: rgb(249 249 249 / 0.4);
+}
+
+.hover\:text-cGrey\/45:hover {
+  color: rgb(249 249 249 / 0.45);
+}
+
+.hover\:text-cGrey\/5:hover {
+  color: rgb(249 249 249 / 0.05);
+}
+
+.hover\:text-cGrey\/50:hover {
+  color: rgb(249 249 249 / 0.5);
+}
+
+.hover\:text-cGrey\/55:hover {
+  color: rgb(249 249 249 / 0.55);
+}
+
+.hover\:text-cGrey\/60:hover {
+  color: rgb(249 249 249 / 0.6);
+}
+
+.hover\:text-cGrey\/65:hover {
+  color: rgb(249 249 249 / 0.65);
+}
+
+.hover\:text-cGrey\/70:hover {
+  color: rgb(249 249 249 / 0.7);
+}
+
+.hover\:text-cGrey\/75:hover {
+  color: rgb(249 249 249 / 0.75);
+}
+
+.hover\:text-cGrey\/80:hover {
+  color: rgb(249 249 249 / 0.8);
+}
+
+.hover\:text-cGrey\/85:hover {
+  color: rgb(249 249 249 / 0.85);
+}
+
+.hover\:text-cGrey\/90:hover {
+  color: rgb(249 249 249 / 0.9);
+}
+
+.hover\:text-cGrey\/95:hover {
+  color: rgb(249 249 249 / 0.95);
+}
+
+.hover\:text-cGrey3:hover {
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity));
+}
+
+.hover\:text-cGrey3\/0:hover {
+  color: rgb(245 245 245 / 0);
+}
+
+.hover\:text-cGrey3\/10:hover {
+  color: rgb(245 245 245 / 0.1);
+}
+
+.hover\:text-cGrey3\/100:hover {
+  color: rgb(245 245 245 / 1);
+}
+
+.hover\:text-cGrey3\/15:hover {
+  color: rgb(245 245 245 / 0.15);
+}
+
+.hover\:text-cGrey3\/20:hover {
+  color: rgb(245 245 245 / 0.2);
+}
+
+.hover\:text-cGrey3\/25:hover {
+  color: rgb(245 245 245 / 0.25);
+}
+
+.hover\:text-cGrey3\/30:hover {
+  color: rgb(245 245 245 / 0.3);
+}
+
+.hover\:text-cGrey3\/35:hover {
+  color: rgb(245 245 245 / 0.35);
+}
+
+.hover\:text-cGrey3\/40:hover {
+  color: rgb(245 245 245 / 0.4);
+}
+
+.hover\:text-cGrey3\/45:hover {
+  color: rgb(245 245 245 / 0.45);
+}
+
+.hover\:text-cGrey3\/5:hover {
+  color: rgb(245 245 245 / 0.05);
+}
+
+.hover\:text-cGrey3\/50:hover {
+  color: rgb(245 245 245 / 0.5);
+}
+
+.hover\:text-cGrey3\/55:hover {
+  color: rgb(245 245 245 / 0.55);
+}
+
+.hover\:text-cGrey3\/60:hover {
+  color: rgb(245 245 245 / 0.6);
+}
+
+.hover\:text-cGrey3\/65:hover {
+  color: rgb(245 245 245 / 0.65);
+}
+
+.hover\:text-cGrey3\/70:hover {
+  color: rgb(245 245 245 / 0.7);
+}
+
+.hover\:text-cGrey3\/75:hover {
+  color: rgb(245 245 245 / 0.75);
+}
+
+.hover\:text-cGrey3\/80:hover {
+  color: rgb(245 245 245 / 0.8);
+}
+
+.hover\:text-cGrey3\/85:hover {
+  color: rgb(245 245 245 / 0.85);
+}
+
+.hover\:text-cGrey3\/90:hover {
+  color: rgb(245 245 245 / 0.9);
+}
+
+.hover\:text-cGrey3\/95:hover {
+  color: rgb(245 245 245 / 0.95);
+}
+
+.hover\:text-cPurple:hover {
+  --tw-text-opacity: 1;
+  color: rgb(109 85 147 / var(--tw-text-opacity));
+}
+
+.hover\:text-cPurple\/0:hover {
+  color: rgb(109 85 147 / 0);
+}
+
+.hover\:text-cPurple\/10:hover {
+  color: rgb(109 85 147 / 0.1);
+}
+
+.hover\:text-cPurple\/100:hover {
+  color: rgb(109 85 147 / 1);
+}
+
+.hover\:text-cPurple\/15:hover {
+  color: rgb(109 85 147 / 0.15);
+}
+
+.hover\:text-cPurple\/20:hover {
+  color: rgb(109 85 147 / 0.2);
+}
+
+.hover\:text-cPurple\/25:hover {
+  color: rgb(109 85 147 / 0.25);
+}
+
+.hover\:text-cPurple\/30:hover {
+  color: rgb(109 85 147 / 0.3);
+}
+
+.hover\:text-cPurple\/35:hover {
+  color: rgb(109 85 147 / 0.35);
+}
+
+.hover\:text-cPurple\/40:hover {
+  color: rgb(109 85 147 / 0.4);
+}
+
+.hover\:text-cPurple\/45:hover {
+  color: rgb(109 85 147 / 0.45);
+}
+
+.hover\:text-cPurple\/5:hover {
+  color: rgb(109 85 147 / 0.05);
+}
+
+.hover\:text-cPurple\/50:hover {
+  color: rgb(109 85 147 / 0.5);
+}
+
+.hover\:text-cPurple\/55:hover {
+  color: rgb(109 85 147 / 0.55);
+}
+
+.hover\:text-cPurple\/60:hover {
+  color: rgb(109 85 147 / 0.6);
+}
+
+.hover\:text-cPurple\/65:hover {
+  color: rgb(109 85 147 / 0.65);
+}
+
+.hover\:text-cPurple\/70:hover {
+  color: rgb(109 85 147 / 0.7);
+}
+
+.hover\:text-cPurple\/75:hover {
+  color: rgb(109 85 147 / 0.75);
+}
+
+.hover\:text-cPurple\/80:hover {
+  color: rgb(109 85 147 / 0.8);
+}
+
+.hover\:text-cPurple\/85:hover {
+  color: rgb(109 85 147 / 0.85);
+}
+
+.hover\:text-cPurple\/90:hover {
+  color: rgb(109 85 147 / 0.9);
+}
+
+.hover\:text-cPurple\/95:hover {
+  color: rgb(109 85 147 / 0.95);
+}
