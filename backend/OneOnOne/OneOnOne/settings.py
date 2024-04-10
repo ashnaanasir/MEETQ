@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-@ass7z1ur=_%arhr8*n*y99od64o((jeh*5-4rcacer04d+7-h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [meetq.onrender.com]
+ALLOWED_HOSTS = ['meetq.onrender.com',]
 
 
 
