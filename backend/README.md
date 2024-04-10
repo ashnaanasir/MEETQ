@@ -26,3 +26,20 @@ python3 manage.py createsuperuser)
 3. python3 manage.py migrate
 4. python3 manage.py runserver
 
+
+Changes Made to deploy the backend to render: (using this guide: https://docs.render.com/deploy-django#updating-an-existing-django-project)
+added psycopg2-binary
+added dj-database-url - at this point cannot import dj-database-url into settings.py
+
+- created a requirements.txt file using pip freeze requirements.txt
+
+- could not modify the settngs.py
+
+Did not set up static file serving as i will be deploying front end separately 
+
+- added build.sh
+
+
+
+
+
