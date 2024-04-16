@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { PROFILE_URL, PROFILE_EDIT_URL } from "../constants";
+import { PROFILE_URL, PROFILE_EDIT_URL } from "../constants/APIEndPoints";
 import logo from "../assets/meetQ_transparent.png";
 import {
   Button,

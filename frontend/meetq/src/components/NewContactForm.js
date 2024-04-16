@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, FormGroup, FormFeedback, Label, Input } from "reactstrap";
 import axios from "axios";
-import { CONTACTS_VIEW_URL } from "../constants";
+import { CONTACTS_VIEW_URL } from "../constants/APIEndPoints";
 
 class NewContactForm extends React.Component {
     // Create a state object with the necessary fields

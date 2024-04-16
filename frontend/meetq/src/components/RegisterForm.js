@@ -8,7 +8,7 @@ import {
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
-import { REGISTER_URL } from "../constants";
+import { REGISTER_URL } from "../constants/APIEndPoints";
 import "../landing.css";
 import logo from "../assets/meetQ_transparent.png";
 

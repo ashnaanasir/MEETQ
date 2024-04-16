@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import logo from "../assets/meetQ_transparent.png";
-import { LOGIN_URL } from "../constants";
+import { LOGIN_URL } from "../constants/APIEndPoints";
 
 class LoginForm extends React.Component {
   constructor(props) {

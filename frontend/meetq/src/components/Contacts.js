@@ -1,10 +1,9 @@
 import React from "react";
 import "../contacts.css";
-import logo from "../assets/meetQ_transparent.png";
 import pp from "../assets/pp1.svg";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { CONTACTS_VIEW_URL } from "../constants";
+import { CONTACTS_VIEW_URL } from "../constants/APIEndPoints";
 
 class Contacts extends React.Component {
 

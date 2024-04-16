@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
-import { REFRESH_URL } from "../constants";
+import { REFRESH_URL } from "../constants/APIEndPoints";
 import logo from "../assets/meetQ_transparent.png";
 
 class Refresh extends React.Component {

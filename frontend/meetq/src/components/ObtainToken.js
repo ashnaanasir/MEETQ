@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import logo from "../assets/meetQ_transparent.png";
-import { OBTAIN_TOKEN_URL } from "../constants";
+import { OBTAIN_TOKEN_URL } from "../constants/APIEndPoints";
 
 // I decided to override this to make my login.
 // Both does the same thing except I used custom login view for the LoginForm.

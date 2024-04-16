@@ -1,8 +1,14 @@
 import "./App.css";
 import React from "react";
-import Landing from "./components/Landing";
-import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
+// import Landing from "./components/Landing";
+import Landing from "./pages/landing";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import DashBoard from "./pages/DashBoard";
+import CalendarDashBoard from "./pages/CalendarDashboard";
+import AddCalendar from "./pages/AddCalendar";
+import CalendarView from "./pages/CalendarView";
+import Schedule from "./pages/Schedule";
 import ObtainToken from "./components/ObtainToken";
 import Refresh from "./components/Refresh";
 import Profile from "./components/Profile";
@@ -20,8 +26,13 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/calendar" element={<CalendarDashBoard />} />
+        <Route path="/calendar/add" element={<AddCalendar />} />
+        <Route path="/calendar/:id" element={<CalendarView />} />
+        <Route path="/schedule" element={<Schedule />} />
         <Route path="/obtain/token" element={<ObtainToken />} />
         <Route path="/refresh" element={<Refresh />} />
         <Route path="/profile" element={<Profile />} />
