@@ -14,6 +14,7 @@ import Refresh from "./components/Refresh";
 import Profile from "./components/Profile";
 import Contacts from "./components/Contacts";
 import NewContactForm from "./components/NewContactForm";
+import CalendarEditView from "./pages/CalendarEditView";
 import {
   BrowserRouter as Router,
   Routes,
@@ -32,6 +33,7 @@ function App() {
         <Route path="/calendar" element={<CalendarDashBoard />} />
         <Route path="/calendar/add" element={<AddCalendar />} />
         <Route path="/calendar/:id" element={<CalendarView />} />
+        <Route path="/calendar/:id/edit" element={<CalendarEditView />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/obtain/token" element={<ObtainToken />} />
         <Route path="/refresh" element={<Refresh />} />
