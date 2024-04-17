@@ -1,13 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
+from calendars.models.calendar import Calendar
+from accounts.models.contact import Contact
+
 
 class Schedule(models.Model):
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="schedules")
-    week = models.DateField(help_text="The week for this schedule")
+    calendars = models.ManyToManyField('calendars.Calendar', related_name="schedules")
+    matches = models.JSONField(default=list)  
+    isFinal = models.BooleanField(default=False)
 
-    def get_meetings(self):
-        """
-        Returns a queryset of meetings associated with this schedule,
-        which effectively acts like a list of meetings with their dates and time slots.
-        """
-        return self.meetings.all()

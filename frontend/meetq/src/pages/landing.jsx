@@ -36,7 +36,7 @@ export default function Landing() {
                         <Typography variant="h3" align="center" gutterBottom color="primary.dark">Welcome to MeetQ</Typography>
                         <Typography variant="h5" align="center" gutterBottom color="primary.dark" sx={{mb: 10}}>The best place to meet and connect with people</Typography>
 
-                        <Link to={"/"}>
+                        <Link to={"/login"}>
                             <Button variant="contained" color="primary" sx={{ m: 1}}>Log In</Button>
                         </Link>
                         <Link to={"/register"}>

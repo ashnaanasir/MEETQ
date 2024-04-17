@@ -41,7 +41,7 @@ export default function SignIn() {
             const response = await axios.post(LOGIN_URL, data);
             localStorage.setItem("access_token", response.data.access);
             localStorage.setItem("refresh_token", response.data.refresh);
-            window.location.href = "/profile";
+            window.location.href = "/dashboard";
           } catch (error) {
             if ((error.response && error.response.data) || error.response.data.detail) {
                 const { username, password } = error.response.data;

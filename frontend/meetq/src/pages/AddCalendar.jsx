@@ -13,7 +13,8 @@ import Footer from "../components/footer.jsx";
 import NavBar from "../components/navbar.jsx";
 import { CONTACTS_VIEW_URL, CREATE_CALENDAR_URL } from '../constants/APIEndPoints.js';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker , LocalizationProvider} from '@mui/x-date-pickers';
+import { DatePicker , LocalizationProvider, TimePicker} from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 
 const defaultTheme = createTheme({
     palette: {
@@ -25,25 +26,26 @@ const defaultTheme = createTheme({
 export default function AddCalendar() {
     const [calendarName, setCalendarName] = useState('');
     const [calendarDescription, setCalendarDescription] = useState('');
-    const [calendarColor, setCalendarColor] = useState('');
     const [calendarStart, setCalendarStart] = useState('');
     const [calendarEnd, setCalendarEnd] = useState('');
+    const [currentContact, setCurrentContact] = useState('');  // State to store the current contact being added
+    const [currentTime, setCurrentTime] = useState(dayjs());  // State to store the current time being added
     const [deadline, setDeadline] = useState('');
-    const [invitedUsers, setInvitedUsers] = useState('');
+    const [invitedUsers, setInvitedUsers] = useState([]);
     const [contacts, setContacts] = useState([]);  // State to store contacts
+    const [ownersAvailable, setOwnersAvailable] = useState([]);
+    const [ownersPreferred, setOwnersPreferred] = useState([]);
 
     useEffect(() => {
         const fetchContacts = async () => {
             // Fetch the token from localStorage
             const token = localStorage.getItem("access_token");
-
             // Set the request headers to include the token
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             };
-
             try {
                 const response = await axios.get(CONTACTS_VIEW_URL, config);
                 setContacts(response.data);  // Assuming the API returns an array of contacts
@@ -58,30 +60,35 @@ export default function AddCalendar() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData();
-        data.append('calendarName', calendarName);
-        data.append('calendarDescription', calendarDescription);
-        data.append('calendarColor', calendarColor);
-        data.append('calendarStart', calendarStart);
-        data.append('calendarEnd', calendarEnd);
-        data.append('deadline', deadline);
-        data.append('invitedUsers', invitedUsers);
-
+        const data = {};
+        data['name'] = calendarName;
+        data['description'] = calendarDescription;
+        data['color'] = '#000000';
+        data['owner'] = '1';  // TODO: Update this to the actual owner ID (logged in user ID
+        data['duration'] = '60'; //TODO: Add duration field to the form
+        data['start_date'] = calendarStart;
+        data['end_date'] = calendarEnd;
+        data['deadline'] = deadline;
+        data['invited_ids'] = invitedUsers;
+        data['owners_available'] = ownersAvailable;
+        data['owners_preferred'] = ownersPreferred;
+ 
         console.log(data);
-        // try {
-        //     const response = await axios.post(CREATE_CALENDAR_URL, data);
-        //     console.log(response);
-        //     // TODO: Figure out how to return to the calendar view page
-        //   } catch (error) {
-        //     console.log(error);
-        //   }
+        try {
+            const response = await axios.post(CREATE_CALENDAR_URL, data);
+            console.log(response);
+            window.location.href = "/calendar";
+
+          } catch (error) {
+            console.log(error);
+          }
       };
 
     return (
         <ThemeProvider theme={defaultTheme}>
             <NavBar />
             <Container maxWidth="lg" display="flex" alignItems="center" justifyContent="center" sx={{mt: '80px'}}>
-                <Box minheight='80vh' minwidth='80vw' height='80vh' display="flex" flexDirection="column" justifyContent="space-around" alignItems="center"
+                <Box minheight='80vh' minwidth='80vw' height='auto' display="flex" flexDirection="column" justifyContent="space-around" alignItems="center"
                     sx={{bgcolor: 'background.paper', boxShadow: 1, borderRadius: 2, p: 2, minWidth: 300, mx: 'auto' }}>
                     <Typography variant="h4" align="center" gutterBottom color="primary.dark" sx={{ml: 10}}>Add a New Calendar</Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} display="flex" flexDirection="column" sx={{ mt: 3, maxWidth: "80%"}}>
@@ -115,8 +122,9 @@ export default function AddCalendar() {
                                         label="Start Date"      
                                         name='calendarStart'
                                         id='calendarStart'
-                                        onChange={(e) => setCalendarStart(e.target.value)}
-                                        required
+                                        value={calendarStart || null}
+                                        onChange={(newValue) => setCalendarStart(newValue)}
+                                        renderInput={(params) => <TextField {...params} required />}
                                     />
                                 </LocalizationProvider>
                             </Grid>
@@ -126,8 +134,9 @@ export default function AddCalendar() {
                                         label="End Date"
                                         name='calendarEnd'
                                         id='calendarEnd'
-                                        onChange={(e) => setCalendarEnd(e.target.value)}
-                                        required
+                                        value={calendarEnd || null}
+                                        onChange={(newValue) => setCalendarEnd(newValue)}
+                                        renderInput={(params) => <TextField {...params} required />}
                                     />
                                 </LocalizationProvider>
                             </Grid>
@@ -138,11 +147,85 @@ export default function AddCalendar() {
                                         label="Deadline to respond"
                                         name='deadline'
                                         id='deadline'
-                                        onChange={(e) => setDeadline(e.target.value)}
-                                        required
+
+                                        value={deadline || null}
+                                        onChange={(newValue) => setDeadline(newValue)}
+                                        renderInput={(params) => <TextField {...params} required />}
                                     />
                                 </LocalizationProvider>
                             </Grid>
+                            <Grid item xs={8}>
+                                <TextField
+                                required
+                                fullWidth
+                                id="invitedUsers"
+                                label="Invited Users"
+                                name="invitedUsers"
+                                onChange={(e) => setCurrentContact(e.target.value)}
+                                autoComplete="family-name"
+                                />
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button onClick={(e) => setInvitedUsers([...invitedUsers, currentContact])}>Add</Button>
+                            </Grid>
+                            <Grid item xs={12}>
+                                {invitedUsers.map((contact) => (
+                                    <Grid item xs={2}>
+                                        <Typography>{contact}</Typography>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                            <Grid item xs={8}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <TimePicker
+                                    required
+                                    fullWidth
+                                    id="ownersAvailable"
+                                    label="Owner's Available Time"
+                                    value={currentTime || null}
+                                    onChange={(newValue) => setCurrentTime(newValue)}
+                                    renderInput={(params) => <TextField {...params} />}
+                                    />
+                                </LocalizationProvider>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button onClick={(e) => setOwnersAvailable([...ownersAvailable, currentTime])}>Add</Button>
+                            </Grid>
+                            <Grid item xs={12}>
+                                {ownersAvailable.map((time, index) => (
+                                    <Grid item xs={2} key={index}>
+                                        <Typography>
+                                            {time ? time.format("HH:mm") : "Invalid time"}
+                                        </Typography>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                            <Grid item xs={8}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <TimePicker
+                                    required
+                                    fullWidth
+                                    id="ownersPreferred"
+                                    label="Owner's Preferred Time"
+                                    value={currentTime || null}
+                                    onChange={(newValue) => setCurrentTime(newValue)}
+                                    renderInput={(params) => <TextField {...params} />}
+                                    />
+                                </LocalizationProvider>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button onClick={(e) => setOwnersPreferred([...ownersPreferred, currentTime])}>Add</Button>
+                            </Grid>
+                            <Grid item xs={12}>
+                                {ownersPreferred.map((time, index) => (
+                                    <Grid item xs={2} key={index}>
+                                        <Typography>
+                                            {time ? time.format("HH:mm") : "Invalid time"}
+                                        </Typography>
+                                    </Grid>
+                                ))}
+                            </Grid>
+
                         </Grid>
                         <Button
                         type="submit"

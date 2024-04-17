@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {React, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -23,13 +23,32 @@ const defaultTheme = createTheme({
 });
 
 export default function SignUp() {
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-      });
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [retypePassword, setRetypePassword] = useState('');
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData();
+        data.append('first_name', firstName);
+        data.append('last_name', lastName);
+        data.append('username', userName);
+        data.append('email', email);
+        data.append('password', password);
+        data.append('password2', retypePassword);
+        
+        try {
+            const response = await axios.post(REGISTER_URL, data);
+            console.log("Success: ", response.data);
+            window.location.href = "/login";
+        } catch (error) {
+            console.log(error);
+        }
+
     };
 
     return (

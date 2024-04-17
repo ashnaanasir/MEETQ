@@ -5,12 +5,10 @@ Invitee = apps.get_model('calendars', 'Invitee')
 
 class InviteeSerializer(serializers.ModelSerializer):
     contact = serializers.SerializerMethodField()
-
-
+    calendar = serializers.SerializerMethodField()
     class Meta:
         model = Invitee
         fields = ['id', 'contact', 'calendar', 'has_responded', 'available_timeslots', 'preferred_timeslots']
-        read_only_fields = ['available_timeslots', 'preferred_timeslots']
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -19,9 +17,9 @@ class InviteeSerializer(serializers.ModelSerializer):
         
     def create(self, validated_data):
         contact_data = validated_data.pop('contact')
-        contact = contact.objects.get(id=contact_data['id'])
+        contact = contact.objects.get(id=contact_data)
         calendar_data = validated_data.pop('calendar')
-        calendar = Calendar.objects.get(id=calendar_data['id'])
+        calendar = Calendar.objects.get(id=calendar_data)
 
         invitee = Invitee.objects.create(contact=contact, calendar=calendar, **validated_data)
         return invitee
@@ -36,14 +34,14 @@ class InviteeSerializer(serializers.ModelSerializer):
             preferred_timeslots = instance.preferred_timeslots.all()
 
             # Mark available timeslots as preferred
-            for timeslot in available_timeslots:
-                timeslot.is_preferred = True
-                timeslot.save()
-
-            # Mark preferred timeslots as available
-            for timeslot in preferred_timeslots:
-                timeslot.is_preferred = False
-                timeslot.save()
+            for time_slot_data in available_timeslots:
+                time_slot_id = time_slot_data.get('id')
+                time_slot_instance = instance.time_slots.get(id=time_slot_id)
+                time_slot_instance.start_time = time_slot_data.get('start_time')
+                time_slot_instance.end_time = time_slot_data.get('end_time')
+                time_slot_instance.is_preferred = time_slot_data.get('is_preferred')
+                time_slot_instance.save()
+            instance.save()
 
         return instance
     

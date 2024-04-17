@@ -16,9 +16,9 @@ urlpatterns = [
     path('calendar/<int:calendar_id>/', CalendarDetailsAPIView.as_view(), name='calendar-details'),
     path('calendar/create/', CreateCalendarAPIView.as_view(), name='create-calendar'),
     path('calendar/edit/<int:calendar_id>/', EditCalendarAPIView.as_view(), name='edit-calendar'),
-    path('invite/', InviteAPIView.as_view(), name='invite'),
-    path('invite/response/<int:invitee_id>/', InviteResponseAPIView.as_view(), name='invite-response'),
-    path('send_invite/', send_invite_view.send_invite, name='send-invite'),
+    path('calendar/<int:calendar_id>/invite/<int:invitee_id>/', InviteAPIView.as_view(), name='invite'),
+    path('calendar/<int:calendar_id>/invite/<int:invitee_id>/response/', InviteResponseAPIView.as_view(), name='invite-response'),
+    path('calendar/<int:calendar_id>/invite/<int:invitee_id>/send_invite/', send_invite_view.send_invite, name='send-invite'),
     path('timeslot/create/', CreateTimeSlotAPIView.as_view(), name='create-timeslot'),
 ]
 

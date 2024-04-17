@@ -9,14 +9,16 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from schedule.models import (meeting, schedule, scheduleoptions,
                              scheduleplan)
-from schedule.serializers.schedule_serializer import (
-    MeetingSerializer, ScheduleOptionsSerializer, ScheduleSerializer)
+from schedule.serializers import schedule_serializer;
+from schedule.serializers import scheduleoptions_serializer;
+from schedule.serializers import meeting_serializer;
+
 
 # generate schedules for this user
 
 class CreateView(generics.ListCreateAPIView):
     queryset = schedule.Schedule.objects.all()
-    serializer_class = ScheduleSerializer
+    serializer_class = schedule_serializer
     permission_classes = [IsAuthenticated]
     
     def get_queryset(self):

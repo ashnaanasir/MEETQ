@@ -1,19 +1,8 @@
 from accounts.models import contact
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from schedule.models import (meeting, schedule, scheduleoptions,
-                             scheduleplan)
+from schedule.models import (meeting, schedule, scheduleoptions, scheduleplan)
 
-
-class ScheduleOptionsSerializer(serializers.ModelSerializer):
-    owner = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), default=serializers.CurrentUserDefault())
-    option1 = serializers.PrimaryKeyRelatedField(queryset=schedule.Schedule.objects.all())
-    option2 = serializers.PrimaryKeyRelatedField(queryset=schedule.Schedule.objects.all())
-    option3 = serializers.PrimaryKeyRelatedField(queryset=schedule.Schedule.objects.all())
-
-    class Meta:
-        model = scheduleoptions.ScheduleOptions
-        fields = '__all__'
 
 class ScheduleSerializer(serializers.ModelSerializer):
     owner = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), default=serializers.CurrentUserDefault())
@@ -23,36 +12,49 @@ class ScheduleSerializer(serializers.ModelSerializer):
         model = schedule.Schedule
         fields = '__all__'
 
-class MeetingSerializer(serializers.ModelSerializer):
-    owner = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), default=serializers.CurrentUserDefault())
-    contact = serializers.PrimaryKeyRelatedField(queryset=contact.Contact.objects.all())
-    meetings = serializers.RelatedField(queryset=meeting.Meeting.objects.all(), many=True)
-    schedule = serializers.PrimaryKeyRelatedField(queryset=schedule.Schedule.objects.all())
+    def create(self, validated_data):
+        owner = validated_data.get('owner')
+        calendars = validated_data.pop('calendars')
 
-    class Meta:
-        model = meeting.Meeting
-        fields = '__all__'
+        owner_preferred_time = []
+        owner_available_time = []
+        list_of_invitees = []
+        invitees_preferred_time = []
+        invitees_available_time = []
 
-# class ResponseSerializer(serializers.ModelSerializer):
-#     calendar = serializers.PrimaryKeyRelatedField(read_only=True)
-#     contact = serializers.PrimaryKeyRelatedField(read_only=True)
+        for calendar in calendars:
+            # Fetch owner times
+            owner_preferred_time.extend(calendar.owner_preferred_times)
+            owner_available_time.extend(calendar.owner_available_times)
 
-#     class Meta:
-#         model = response.Response
-#         fields = '__all__'
-#         validators = [
-#             serializers.UniqueTogetherValidator(
-#                 queryset=response.Response.objects.all(),
-#                 fields=['calendar', 'contact']
-#             )
-#         ]
+            # Iterate over each invitee
+            for invitee in calendar.invitees.all():
+                list_of_invitees.append(invitee)
+                invitees_preferred_time.append((invitee.id, invitee.preferred_times))
+                invitees_available_time.append((invitee.id, invitee.available_times))
 
-# class SchedulePlanSerializer(serializers.ModelSerializer):
-#     owner = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), default=serializers.CurrentUserDefault())
-#     thisweek = serializers.PrimaryKeyRelatedField(read_only=True)
-#     nextweek = serializers.PrimaryKeyRelatedField(read_only=True)
+        # Matching process
+        meetings_data = []
+        for preferred_time in owner_preferred_time:
+            for idx, (invitee_id, times) in enumerate(invitees_preferred_time):
+                if preferred_time in times:
+                    # Create meeting
+                    invitee = Invitee.objects.get(id=invitee_id)
+                    meeting_data = {
+                        'calendar': calendar,
+                        'timeslot': preferred_time,
+                        'owner': owner,
+                        'invitee': invitee
+                    }
+                    meeting_serializer = MeetingSerializer(data=meeting_data)
+                    if meeting_serializer.is_valid():
+                        meeting_serializer.save()
+                        meetings_data.append(meeting_serializer.instance)
+                        # Remove invitee from the list to prevent re-matching
+                        list_of_invitees.remove(invitee)
+                        break
 
-#     class Meta:
-#         model = scheduleplan.SchedulePlan
-#         fields = '__all__'
-
+        # Instantiate the schedule with the created meetings
+        schedule_instance = Schedule.objects.create(owner=owner, **validated_data)
+        schedule_instance.meetings.set(meetings_data)
+        return schedule_instance

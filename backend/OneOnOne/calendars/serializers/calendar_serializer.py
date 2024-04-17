@@ -14,7 +14,6 @@ class CalendarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Calendar
-        # fields = ['id', 'owner_id', 'name', 'description', 'start_date', 'end_date', 'color', 'duration', 'owners_available', 'owners_preferred', 'deadline']
         fields = ['id', 'name', 'description', 'start_date', 'end_date', 'color', 'duration', 'owners_available', 'owners_preferred', 'deadline', 'owner_id', 'invited_ids']
 
 
@@ -32,9 +31,11 @@ class CalendarSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("One or more Contact IDs are invalid")
         return value
     
-    def create(self, validated_daçta):
+    def create(self, validated_data):
         owner_id = validated_data.pop('owner_id')
         invited_ids = validated_data.pop('invited_ids', [])
+        owner_preferred = validated_data.pop('owners_preferred', [])
+        owner_available = validated_data.pop('owners_available', [])
 
          # Remove the 'owner' key from validated_data if it exists to prevent conflict
         validated_data.pop('owner', None)  # This line ensures 'owner' key is removed if present
