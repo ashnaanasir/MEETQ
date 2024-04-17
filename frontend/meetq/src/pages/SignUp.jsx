@@ -14,6 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { deepPurple, deepOrange } from '@mui/material/colors';
 import Footer from "../components/footer.jsx";
+import axios from 'axios';
+import { REGISTER_URL } from '../constants/APIEndPoints';
 
 const defaultTheme = createTheme({
     palette: {
