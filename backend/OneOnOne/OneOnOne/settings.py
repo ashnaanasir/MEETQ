@@ -128,30 +128,30 @@ WSGI_APPLICATION = 'OneOnOne.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default = 'postgres://postgres:postgres@localhost:5432/oneonone',
-            conn_max_age=600
-        )
-}
-else: 
+# if 'DATABASE_URL' in os.environ:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default = 'postgres://postgres:postgres@localhost:5432/oneonone',
+#             conn_max_age=600
+#         )
+# }
+# else: 
 
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
 
 # # Replace the SQLite DATABASES configuration with PostgreSQL:
-# DATABASES = {
-#     'default': dj_database_url.config(        # Replace this value with your local database's connection string.        
-#         default='postgres://meetqdb_user:odoOhPq9HzxAj4pIyTS9Iuk9HARIOvKK@dpg-cob5ncun7f5s739d99vg-a/meetqdb',        
-#         conn_max_age=600
-#     )
-# }
+DATABASES = {
+    'default': dj_database_url.config(        # Replace this value with your local database's connection string.        
+        default='postgres://meetqdb_user:odoOhPq9HzxAj4pIyTS9Iuk9HARIOvKK@dpg-cob5ncun7f5s739d99vg-a/meetqdb',        
+        conn_max_age=600
+    )
+}
 
 
 # Password validation
