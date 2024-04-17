@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -153,6 +153,14 @@ export default function AddCalendar() {
                                         renderInput={(params) => <TextField {...params} required />}
                                     />
                                 </LocalizationProvider>
+                            </Grid>
+                            <Grid item xs={12}>
+                                {{contacts} && contacts.map((contact) => (
+                                    <Grid item xs={2} key={contact.id}>
+                                        <Typography>{contact.name}</Typography>
+                                        <Typography>{contact.id}</Typography>
+                                    </Grid>
+                                ))}
                             </Grid>
                             <Grid item xs={8}>
                                 <TextField
