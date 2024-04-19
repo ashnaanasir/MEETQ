@@ -9,6 +9,7 @@ from calendars.serializers.calendar_serializer import CalendarSerializer
 class AllCalendarsAPIView(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    
 
     def get(self, request):
         user = request.user

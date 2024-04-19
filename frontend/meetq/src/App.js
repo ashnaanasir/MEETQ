@@ -1,9 +1,11 @@
 import "./App.css";
 import React from "react";
-// import Landing from "./components/Landing";
-import Landing from "./pages/landing";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
+import Landing from "./components/Landing";
+import SignUp from "./components/RegisterForm";
+import SignIn from "./components/LoginForm";
+// import Landing from "./pages/landing";
+// import SignUp from "./pages/SignUp";
+// import SignIn from "./pages/SignIn";
 import DashBoard from "./pages/DashBoard";
 import CalendarDashBoard from "./pages/CalendarDashboard";
 import AddCalendar from "./pages/AddCalendar";

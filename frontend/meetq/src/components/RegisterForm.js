@@ -46,7 +46,7 @@ class RegisterForm extends React.Component {
   createStudent = (e) => {
     e.preventDefault();
     axios
-      .post(REGISTER_URL, this.state)
+      .post('http://127.0.0.1:8000/accounts/register/', this.state)
       .then((response) => {
         // Handle success or any other logic here
         console.log("Success: ", response.data);

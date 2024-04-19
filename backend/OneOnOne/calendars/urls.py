@@ -1,5 +1,4 @@
 from django.urls import path
-
 from calendars.views import send_invite_view
 from calendars.views.all_calendar_view import AllCalendarsAPIView
 from calendars.views.calendar_details_view import CalendarDetailsAPIView
@@ -8,18 +7,25 @@ from calendars.views.edit_calendar_view import EditCalendarAPIView
 from calendars.views.invite_response_view import InviteResponseAPIView
 from calendars.views.invite_view import InviteAPIView
 from calendars.views.create_timeslot_view import CreateTimeSlotAPIView
+from calendars.views.all_invitees_view import CalendarInviteesView
+from calendars.views.calendar_timeslots_view import CalendarTimeSlotsView
 
 app_name = 'calendars'
 
+
+
 urlpatterns = [
-    path('calendars/', AllCalendarsAPIView.as_view(), name='all-calendars'),
-    path('calendar/<int:calendar_id>/', CalendarDetailsAPIView.as_view(), name='calendar-details'),
-    path('calendar/create/', CreateCalendarAPIView.as_view(), name='create-calendar'),
-    path('calendar/edit/<int:calendar_id>/', EditCalendarAPIView.as_view(), name='edit-calendar'),
-    path('calendar/<int:calendar_id>/invite/<int:invitee_id>/', InviteAPIView.as_view(), name='invite'),
-    path('calendar/<int:calendar_id>/invite/<int:invitee_id>/response/', InviteResponseAPIView.as_view(), name='invite-response'),
-    path('calendar/<int:calendar_id>/invite/<int:invitee_id>/send_invite/', send_invite_view.send_invite, name='send-invite'),
-    path('timeslot/create/', CreateTimeSlotAPIView.as_view(), name='create-timeslot'),
+    path('calendar/', AllCalendarsAPIView.as_view(), name='all-calendars'), #works
+    path('calendars/<int:calendar_id>/', CalendarDetailsAPIView.as_view(), name='calendar-details'), #works
+    path('calendars/create/', CreateCalendarAPIView.as_view(), name='create-calendar'), #works
+    path('calendars/edit/<int:calendar_id>/', EditCalendarAPIView.as_view(), name='edit-calendar'), #works
+    path('calendars/<int:calendar_id>/timeslots/', CalendarTimeSlotsView.as_view(), name='calendar-timeslots'), #works
+    path('calendars/<int:calendar_id>/invitees/', CalendarInviteesView.as_view(), name='invitees'), #works
+    path('calendars/<int:calendar_id>/invitees/<int:invitee_id>/', InviteAPIView.as_view(), name='invite'), #works
+    path('calendars/<int:calendar_id>/invitees/<int:invitee_id>/response/', InviteResponseAPIView.as_view(), name='invite-response'), #works
+    path('calendars/<int:calendar_id>/invitees/<int:invitee_id>/send_invite/', send_invite_view.send_invite, name='send-invite'), #works
+    
+    path('timeslot/create/', CreateTimeSlotAPIView.as_view(), name='create-timeslot'), #don't need this but works
 ]
 
 

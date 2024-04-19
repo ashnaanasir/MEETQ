@@ -18,6 +18,10 @@ class Calendar(models.Model):
     
     def __str__(self):
         return self.name
+    
+
+    # function that returns the invitees of the calendar
+    
 
     @property
     def responded_invitees_count(self):

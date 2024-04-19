@@ -6,28 +6,37 @@ from rest_framework.permissions import IsAuthenticated
 from calendars.serializers.invitee_serializer import InviteeSerializer
 from accounts.models.contact import Contact
 from calendars.models.calendar import Calendar
+from calendars.models.timeslot import TimeSlot
+from calendars.serializers.timeslot_serializer import TimeSlotSerializer
+from calendars.models.invitee import Invitee
 
 class InviteAPIView(APIView):
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
-    def post(self, request):
-        calendar_id = request.data.get('calendar_id')
-        contact_id = request.data.get('contact_id')
-
+    def get(self, request, calendar_id, invitee_id):
         try:
+            # Fetch the calendar to ensure it exists and belongs to the user
             calendar = Calendar.objects.get(id=calendar_id, owner=request.user)
         except Calendar.DoesNotExist:
             return Response({"error": "Calendar not found"}, status=status.HTTP_404_NOT_FOUND)
 
         try:
-            contact = Contact.objects.get(id=contact_id)
-        except Contact.DoesNotExist:
-            return Response({"error": "Contact not found"}, status=status.HTTP_404_NOT_FOUND)
+            # Ensure the invitee belongs to the specified calendar
+            invitee = Invitee.objects.get(id=invitee_id, calendar=calendar)
+            # If the invitee has responded, fetch their timeslots
+            if invitee.has_responded:
+                timeslots = TimeSlot.objects.filter(calendar=calendar, invitee=invitee)
+                timeslot_serializer = TimeSlotSerializer(timeslots, many=True)
+                invitee_data = InviteeSerializer(invitee).data
+                invitee_data['available_timeslots'] = timeslot_serializer.data
+                invitee_data['preferred_timeslots'] = timeslot_serializer.data
 
-        invitee_data = {'calendar': calendar.id, 'contact': contact.id}
-        serializer = InviteeSerializer(data=invitee_data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response(invitee_data)
+
+            # If the invitee has not responded, just return invitee info
+            serializer = InviteeSerializer(invitee)
+            return Response(serializer.data)
+            
+        except Invitee.DoesNotExist:
+            return Response({"error": "Invitee not found"}, status=status.HTTP_404_NOT_FOUND)
