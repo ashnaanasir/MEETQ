@@ -18,7 +18,7 @@ def send_invite(user, calendar_id, invitee_id):
 
     # Generate a unique link for the invitee to respond to the invitation
     # unique_link = reverse('calendars:invite-response', kwargs={'calendar_id': calendar.id, 'invitee_id': invitee.id})
-    invite_url = 'localhost:3000/calendar/' + str(calendar.id) + '/invitees/' + str(invitee.id) + '/response/'
+    invite_url = 'meetq-frontend.onrender.com/calendar/' + str(calendar.id) + '/invitees/' + str(invitee.id) + '/response/'
 
     # Prepare email subject and message
     subject = f'You are invited to the event {calendar.name}!'
