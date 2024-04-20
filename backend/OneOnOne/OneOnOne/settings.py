@@ -15,8 +15,8 @@ from pathlib import Path
 # importing dj_database_url
 # from venv/lib import dj_database_url
 #import os
-# import os
-# import dj_database_url
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-@ass7z1ur=_%arhr8*n*y99od64o((jeh*5-4rcacer04d+7-h
 DEBUG = True
 
 ALLOWED_HOSTS = ['meetq.onrender.com', 'localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://localhost:8000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://localhost:8000', 'https://meetq-frontend.onrender.com']
 
 CORS_EXPOSE_HEADERS = ['Set-Cookie']
 
@@ -83,7 +83,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    # 'https://yourproductiondomain.com',
+    'https://meetq-frontend.onrender.com',
 ]
 
 
@@ -156,28 +156,28 @@ WSGI_APPLICATION = 'OneOnOne.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-# if 'DATABASE_URL' in os.environ:
-#     DATABASES = {
-#         'default': dj_database_url.config(
-#             default = 'postgres://postgres:postgres@localhost:5432/oneonone',
-#             conn_max_age=600
-#         )
-# }
-# else: 
-
-
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
+# }
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default = 'postgres://postgres:postgres@localhost:5432/oneonone',
+            conn_max_age=600
+        )
+}
+else: 
+
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # # # # Replace the SQLite DATABASES configuration with PostgreSQL:
 # # DATABASES = {
