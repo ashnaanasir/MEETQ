@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
 import logo from "../assets/meetQ_transparent.png";
 import { LOGIN_URL } from "../constants/APIEndPoints";
 
@@ -134,13 +135,9 @@ class LoginForm extends React.Component {
                     {errors.detail} <br /> <br />
                   </p>
                 )}
-
-                <Button
-                  type="submit"
-                  className="bg-cDarkPurple hover:bg-cPurple text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                  Login
-                </Button>
+                  <Button className="text-xs md:text-base lg:text-base bg-cPurple hover:bg-cDarkPurple text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Log In
+                  </Button>
               </Form>
             </div>
           </div>

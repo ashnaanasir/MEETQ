@@ -1,11 +1,13 @@
-import React from "react";
+import {React, useEffect, useState} from "react";
 import { Card, CardContent, Typography, Button, Grid, Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { deepPurple, deepOrange } from "@mui/material/colors";
 import Box from "@mui/material/Box";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Footer from "../components/footer.jsx";
+import { SEND_INVITE_URL, EDIT_CALENDAR_URL , CALENDAR_DETAILS_URL, GET_CALENDAR_INVITEES_URL} from "../constants/APIEndPoints.js";
 import NavBar from "../components/navbar.jsx";
+import axios from 'axios';
 
 const defaultTheme = createTheme({
     palette: {
@@ -16,27 +18,42 @@ const defaultTheme = createTheme({
 
 
 export default function CalendarView(props) {
-
+    const [calendar, setCalendar] = useState([]);
+    const [invitees, setInvitees] = useState([]);
+// 
     const { id } = useParams(); //gets the calendar id from the route, and uses it to fetch the calendar data from the backend
-    console.log(id);
+    
 
+    useEffect(() => {
+        
+        const fetchCalendar = async () => {
+            
+        // Fetch the token from localStorage
+            const token = localStorage.getItem("access_token");
+            // Set the request headers to include the token
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            try {
+                const response = await axios.get(CALENDAR_DETAILS_URL.replace('<calendar_id>', id), config);
+                const calendardata = response.data;
+                console.log(calendardata.id);
+                const responsesinvitee =  await axios.get(GET_CALENDAR_INVITEES_URL.replace('<calendar_id>', calendardata.id), config);
+                const invitees = responsesinvitee.data;
 
-    // Placeholder for calendar data
-    const calendar = {
-        title: "Annual Team Meeting",
-        description: "Planning the roadmap for the upcoming year.",
-        startDate: "2024-01-01",
-        endDate: "2024-01-05",
-        deadline: "2023-12-25",
-        invited: ["Alice", "Bob", "Charlie"],
-        responses: 2
-    };
+                setInvitees(invitees);
+                setCalendar(calendardata);
+                
+            } catch (error) {
+                console.error('Failed to fetch Calendar', error);
+            }
+        };
+        fetchCalendar();
+    }, []);
 
-    // Placeholder functions for button actions
-    const handleSendInvites = () => console.log("Sending invites...");
-    const handleEdit = () => console.log("Editing...");
-    const handleDelete = () => console.log("Deleting...");
-
+    // Placeholder functions for button action
     return (
         <ThemeProvider theme={defaultTheme}>
             <NavBar />
@@ -49,43 +66,55 @@ export default function CalendarView(props) {
                     <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" sx={{minWidth: "80%"}}>
                        <Card raised sx={{ width: '90%', m: 2 }}>
                             <CardContent>
-                                <Typography variant="h5" gutterBottom>
-                                    {calendar.title}
+                                <Typography variant="h2" gutterBottom>
+                                    {calendar.name}
                                 </Typography>
                                 <Typography variant="subtitle1">
                                     {calendar.description}
                                 </Typography>
                                 <Typography variant="body2">
-                                    Start Date: {calendar.startDate}
+                                    Start Date: {calendar.start_date}
                                 </Typography>
                                 <Typography variant="body2">
-                                    End Date: {calendar.endDate}
+                                    End Date: {calendar.end_date}
                                 </Typography>
                                 <Typography variant="body2">
                                     Response Deadline: {calendar.deadline}
                                 </Typography>
                                 <Typography variant="body2">
-                                    People Invited: {calendar.invited.join(', ')}
+                                    Responses: {invitees.filter(invitee => invitee.has_responded).length}
                                 </Typography>
                                 <Typography variant="body2">
-                                    Responses: {calendar.responses}
+                                    Total: {invitees.length} invitees
                                 </Typography>
                                 <Grid container spacing={2} sx={{ mt: 2 }}>
-                                    <Grid item>
-                                        <Button variant="contained" color="primary" onClick={handleSendInvites}>
-                                            Send Invites
-                                        </Button>
+                                    {invitees.map((invitee) => (
+                                    <><Grid item>
+                                        <Typography variant="body2">
+                                            {invitee.contact.name}
+                                        </Typography>
+                                        <Typography variant="body2">
+                                            {invitee.has_responded ? "Responded" : "Not Responded"}
+                                        </Typography>
                                     </Grid>
                                     <Grid item>
-                                        <Button variant="contained" color="secondary" onClick={handleEdit}>
+                                        <Link to={`/calendar/${calendar.id}/invitees/${invitee.id}/send-invite`}>
+                                            <Button variant="contained" color="primary" disabled={invitee.has_responded}>
+                                                Send Invite
+                                            </Button>
+                                        </Link>
+                                    </Grid></>
+                                    ))}
+                                
+
+                                    <Grid item>
+                                    <Link to={`/calendar/${calendar.id}/edit`}>
+                                        <Button variant="contained" color="secondary">
                                             Edit
                                         </Button>
+                                    </Link>
                                     </Grid>
-                                    <Grid item>
-                                        <Button variant="contained" color="error" onClick={handleDelete}>
-                                            Delete
-                                        </Button>
-                                    </Grid>
+                                    
                                 </Grid>
 
                             </CardContent>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { PROFILE_URL, PROFILE_EDIT_URL } from "../constants/APIEndPoints";
+import NavBar from "./navbar";
 import logo from "../assets/meetQ_transparent.png";
 import {
   Button,
@@ -121,6 +122,7 @@ const Profile = () => {
         </header>
         <div className="flex justify-center pt-4">
           <div className="w-full max-w-md">
+            <div> <NavBar /></div>
             <div className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 mb-4">
               <h2 className="font-sans text-2xl md:text-4xl lg:text-5xl font-bold dark:text-white leading-normal mb-2">
                 Profile
@@ -232,10 +234,7 @@ const Profile = () => {
                       </FormFeedback>
                     )}
                   </FormGroup>
-                  <Button
-                    className="text-xs md:text-base lg:text-base bg-cPurple hover:bg-cDarkPurple text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit"
-                  >
+                  <Button className="text-xs md:text-base lg:text-base bg-cPurple hover:bg-cDarkPurple text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Save Changes
                   </Button>
                 </Form>

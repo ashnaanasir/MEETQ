@@ -13,7 +13,7 @@ export default function CalendarCard(props) {
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {props.title}
-          {props.everyoneResponded === 'Yes' ? <FiberManualRecordIcon color="success" /> : <FiberManualRecordIcon color="error" />}
+          {props.numResponded == props.total ? <FiberManualRecordIcon color="success" /> : <FiberManualRecordIcon color="error" />}
         </Typography>
         <Typography variant="body2" color="text.secondary">
             {props.description}  
@@ -24,7 +24,7 @@ export default function CalendarCard(props) {
         </CardContent>
       <CardActions>
         <Link to={`/calendar/${props.id}`}>
-        <Button variant="contained" size="small">View</Button>
+          <Button variant="contained" size="small">View</Button>
         </Link>
       </CardActions>
     </Card>

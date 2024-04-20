@@ -8,7 +8,7 @@ import Footer from "../components/footer.jsx";
 import NavBar from "../components/navbar.jsx";
 import axios from 'axios';
 import { EDIT_CALENDAR_URL } from "../constants/APIEndPoints";
-
+import { Link } from 'react-router-dom';
 
 const defaultTheme = createTheme({
     palette: {
@@ -133,9 +133,11 @@ export default function CalendarEditView(props) {
                                     shrink: true,
                                 }}
                             />
-                            <Button variant="contained" color="primary" onClick={handleSubmit}>
-                                Submit
-                            </Button>
+                            <Link to="/calendar">
+                                <Button variant="contained" color="primary" onClick={handleSubmit}>
+                                    Submit
+                                </Button>
+                            </Link>
                         </CardContent>
                     </Card>
                     </Box>
