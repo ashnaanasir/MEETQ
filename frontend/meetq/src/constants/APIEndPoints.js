@@ -9,12 +9,14 @@ export const PROFILE_URL ="http://127.0.0.1:8000/accounts/profile/view/";
 export const PROFILE_EDIT_URL ="http://127.0.0.1:8000/accounts/profile/edit/";
 export const CONTACTS_VIEW_URL ="http://127.0.0.1:8000/accounts/api/contacts/";
 export const ALL_CALENDARS_URL ="http://127.0.0.1:8000/calendars/calendars";
-export const CALENDAR_DETAILS_URL ="http://127.0.0.1:8000/calendars/calendar/<calendar_id>/";  // Replace <calendar_id> with actual ID when used
-export const CREATE_CALENDAR_URL ="http://127.0.0.1:8000/calendars/calendar/create/";
-export const EDIT_CALENDAR_URL ="http://127.0.0.1:8000/calendars/calendar/edit/<calendar_id>/";  // Replace <calendar_id> with actual ID when used
-export const INVITE_URL ="http://127.0.0.1:8000/calendars/calendar/<calendar_id>/invite/<invitee_id>/";  // Replace <calendar_id> and <invitee_id> with actual IDs when used
-export const INVITE_RESPONSE_URL ="http://127.0.0.1:8000/calendars/calendar/<calendar_id>/invite/<invitee_id>/response";  // Replace <invitee_id> with actual ID when used
-export const SEND_INVITE_URL ="http://127.0.0.1:8000/send_invite/";
+export const CALENDAR_DETAILS_URL ="http://127.0.0.1:8000/calendars/calendars/<calendar_id>/";  // Replace <calendar_id> with actual ID when used
+export const CREATE_CALENDAR_URL ="http://127.0.0.1:8000/calendars/calendars/create/";
+export const EDIT_CALENDAR_URL ="http://127.0.0.1:8000/calendars/calendars/edit/<calendar_id>/";
+export const GET_CALENDAR_INVITEES_URL = "http://127.0.0.1:8000/calendars/<calendar_id>/invitees/"  // Replace <calendar_id> with actual ID when used
+export const GET_CALENDAR_TIMES_URL = "http://127.0.0.1:8000/calendars/<calendar_id>/timeslots/"  // Replace <calendar_id> with actual ID when used
+export const GET_INVITEE_URL ="http://127.0.0.1:8000/calendars/calendars/<calendar_id>/invitees/<invitee_id>/";  // Replace <calendar_id> and <invitee_id> with actual IDs when used
+export const INVITE_RESPONSE_URL ="http://127.0.0.1:8000/calendars/calendars/<calendar_id>/invitees/invitee_id>/response/";  // Replace <invitee_id> with actual ID when used
+export const SEND_INVITE_URL ="http://127.0.0.1:8000/calendars/<calendar_id>/invitees/<invitee_id>/send_invite/";
 export const CREATE_TIMESLOT_URL ="http://127.0.0.1:8000/timeslot/create/";
 
 
