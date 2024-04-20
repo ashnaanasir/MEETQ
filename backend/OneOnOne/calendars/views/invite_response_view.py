@@ -1,8 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
 from calendars.models.invitee import Invitee
 from django.utils.dateparse import parse_datetime
 from calendars.models.invitee import Invitee
@@ -12,15 +10,21 @@ from datetime import timedelta
 
 
 class InviteResponseAPIView(APIView):
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         """This method is required by DjangoModelPermissions or similar permissions."""
         # This queryset is used for permission checks and not for data fetching
+
+        if not request.user.is_authenticated:
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
+        
         return Invitee.objects.all()
     
     def post(self, request, calendar_id, invitee_id):
+
+        if not request.user.is_authenticated:
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
+        
         try:
             invitee = Invitee.objects.get(id=invitee_id, calendar_id=calendar_id)  # Also ensure the invitee belongs to the specific calendar
         except Invitee.DoesNotExist:
@@ -49,6 +53,8 @@ class InviteResponseAPIView(APIView):
 
         # Update the invitee object to indicate they have responded
         invitee.has_responded = True
-        invitee.save()
+        calendar.num_responded_invitees += 1
 
+        invitee.save()
+        calendar.save()
         return Response({'message': 'Response submitted successfully'}, status=status.HTTP_200_OK)

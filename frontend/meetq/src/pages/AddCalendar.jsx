@@ -57,8 +57,17 @@ export default function AddCalendar() {
 
         fetchContacts();
     }, []);  // Empty dependency array to ensure this runs only once on component mount
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const token = localStorage.getItem("access_token");
+         // Set the request headers to include the token
+        const config = {
+            headers: {
+            Authorization: `Bearer ${token}`,
+            },
+        };
         const data = {
             owner_id: contacts[0]['user'],  // Assuming the owner's ID is known and static, adjust as necessary
             name: calendarName,
@@ -73,9 +82,10 @@ export default function AddCalendar() {
             invited_ids: invitedUsers.map(Number)  // Assuming these are stored as strings, convert to numbers
         };
  
-        console.log(data);
+        console.log(JSON.stringify(data));
         try {
-            const response = await axios.post(CREATE_CALENDAR_URL, data);
+            const response = await axios.post(CREATE_CALENDAR_URL, data, config);
+
             console.log(response);
             window.location.href = "/calendar";
 

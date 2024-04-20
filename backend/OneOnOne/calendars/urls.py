@@ -13,9 +13,8 @@ from calendars.views.calendar_timeslots_view import CalendarTimeSlotsView
 app_name = 'calendars'
 
 
-
 urlpatterns = [
-    path('calendar/', AllCalendarsAPIView.as_view(), name='all-calendars'), #works
+    path('calendars/', AllCalendarsAPIView.as_view(), name='all-calendars'), #works
     path('calendars/<int:calendar_id>/', CalendarDetailsAPIView.as_view(), name='calendar-details'), #works
     path('calendars/create/', CreateCalendarAPIView.as_view(), name='create-calendar'), #works
     path('calendars/edit/<int:calendar_id>/', EditCalendarAPIView.as_view(), name='edit-calendar'), #works

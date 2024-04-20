@@ -1,16 +1,16 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
 from calendars.models.calendar import Calendar
 from calendars.serializers.calendar_serializer import CalendarSerializer
 
 class EditCalendarAPIView(APIView):
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAuthenticated]
 
     def put(self, request, *args, **kwargs):
+
+        if not request.user.is_authenticated:
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
+        
         calendar_id = kwargs.get('calendar_id')  # Retrieve calendar_id from URL kwargs
 
         try:

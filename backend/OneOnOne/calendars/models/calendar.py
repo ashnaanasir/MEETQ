@@ -13,6 +13,8 @@ class Calendar(models.Model):
     owners_available = models.JSONField(default=list)
     owners_preferred = models.JSONField(default=list)
     deadline = models.DateField()
+    number_invitees = models.IntegerField(default=0)
+    number_responded = models.IntegerField(default=0)
     # use related_name to access the invitees from the Contact model
     invited = models.ManyToManyField(Contact, related_name="calendars")
     

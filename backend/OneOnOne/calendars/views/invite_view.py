@@ -1,8 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
 from calendars.serializers.invitee_serializer import InviteeSerializer
 from accounts.models.contact import Contact
 from calendars.models.calendar import Calendar
@@ -11,10 +9,12 @@ from calendars.serializers.timeslot_serializer import TimeSlotSerializer
 from calendars.models.invitee import Invitee
 
 class InviteAPIView(APIView):
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAuthenticated]
 
     def get(self, request, calendar_id, invitee_id):
+
+        if not request.user.is_authenticated:
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
+        
         try:
             # Fetch the calendar to ensure it exists and belongs to the user
             calendar = Calendar.objects.get(id=calendar_id, owner=request.user)

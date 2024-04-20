@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { Link } from 'react-router-dom';
 
 export default function CalendarCard(props) {
   return (
@@ -22,7 +23,9 @@ export default function CalendarCard(props) {
         </Typography>
         </CardContent>
       <CardActions>
+        <Link to={`/calendar/${props.id}`}>
         <Button variant="contained" size="small">View</Button>
+        </Link>
       </CardActions>
     </Card>
   );

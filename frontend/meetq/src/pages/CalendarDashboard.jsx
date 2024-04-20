@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Typography, Container, Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { deepPurple, deepOrange } from "@mui/material/colors";
@@ -7,7 +7,8 @@ import AddIcon from '@mui/icons-material/Add';
 import Footer from "../components/footer.jsx";
 import NavBar from "../components/navbar.jsx";
 import CalendarCard from "../components/CalendarCard.jsx";
-// import axios from 'axios';
+import { ALL_CALENDARS_URL } from "../constants/APIEndPoints.js";
+import axios from 'axios';
 // import { Link } from 'react-router-dom';
 
 
@@ -21,6 +22,29 @@ const defaultTheme = createTheme({
 
 
 export default function CalendarDashBoard() {
+    const [calendars, setCalendars] = useState([]);
+    
+    useEffect(() => {
+        const fetchCalendars = async () => {
+            // Fetch the token from localStorage
+            const token = localStorage.getItem("access_token");
+            // Set the request headers to include the token
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            try {
+                const response = await axios.get(ALL_CALENDARS_URL, config);
+                console.log(response.data);
+                setCalendars(response.data);  // Assuming the API returns an array of contacts
+            } catch (error) {
+                console.error('Failed to fetch Calendars', error);
+            }
+        };
+
+        fetchCalendars();
+    }, []);  // Empty dependency array to ensure this runs only once on component mount
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -35,12 +59,10 @@ export default function CalendarDashBoard() {
                             Add Calendar</Button>
                     </Box>
                     <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                        <CalendarCard title="Calendar 1" description="This is a description of calendar 1" everyoneResponded="Yes" numResponded="20" total="20"/>
-                        <CalendarCard title="Calendar 2" description="This is a description of calendar 1" everyoneResponded="No" numResponded="16" total="20"/>
-                        <CalendarCard title="Calendar 3" description="This is a description of calendar 1" everyoneResponded="Yes" numResponded="16" total="20"/>
-                        <CalendarCard title="Calendar 4" description="This is a description of calendar 1" everyoneResponded="No" numResponded="16" total="20"/>
-                        <CalendarCard title="Calendar 5" description="This is a description of calendar 1" everyoneResponded="Yes" numResponded="16" total="20"/>
-                        <CalendarCard title="Calendar 6" description="This is a description of calendar 1" everyoneResponded="No" numResponded="16" total="20"/>
+                        {calendars.map((calendar) => (
+                            <CalendarCard key={calendar.id} title={calendar.name} 
+                            description={calendar.description} everyoneResponded="yes" numResponded="3" total="3" />
+                        ))}
 
                     </Box>
                 </Box>
