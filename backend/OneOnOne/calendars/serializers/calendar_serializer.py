@@ -50,7 +50,6 @@ class CalendarSerializer(serializers.ModelSerializer):
         for contact_id in invited_ids:
             contact_data = {'contact': contact_id, 'calendar': calendar.id}
             invitee_serializer = InviteeSerializer(data=contact_data)
-            calendar.number_invitees += 1
             if invitee_serializer.is_valid(raise_exception=True):
                 invitee_serializer.save()
 
@@ -85,7 +84,6 @@ class CalendarSerializer(serializers.ModelSerializer):
         invited_ids = validated_data.get('invited_ids', [])
         owner_available = validated_data.get('owners_available', [])
         owner_preferred = validated_data.get('owners_preferred', [])
-        instance.number_invitees = len(invited_ids)
         # Update invitees
         if invited_ids is not None:
             current_invitees = {invitee.contact.id: invitee for invitee in instance.invitees.all()}

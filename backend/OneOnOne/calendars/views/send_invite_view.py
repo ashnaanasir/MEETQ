@@ -17,8 +17,8 @@ def send_invite(user, calendar_id, invitee_id):
         return JsonResponse({'error': 'Calendar not found'}, status=404)
 
     # Generate a unique link for the invitee to respond to the invitation
-    unique_link = reverse('calendars:invite-response', kwargs={'calendar_id': calendar.id, 'invitee_id': invitee.id})
-    invite_url = settings.BASE_URL + unique_link
+    # unique_link = reverse('calendars:invite-response', kwargs={'calendar_id': calendar.id, 'invitee_id': invitee.id})
+    invite_url = 'localhost:3000/calendar/' + str(calendar.id) + '/invitees/' + str(invitee.id) + '/response/'
 
     # Prepare email subject and message
     subject = f'You are invited to the event {calendar.name}!'

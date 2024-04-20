@@ -53,7 +53,6 @@ class InviteResponseAPIView(APIView):
 
         # Update the invitee object to indicate they have responded
         invitee.has_responded = True
-        calendar.num_responded_invitees += 1
 
         invitee.save()
         calendar.save()
