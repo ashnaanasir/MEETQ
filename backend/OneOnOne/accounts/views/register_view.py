@@ -4,8 +4,6 @@ from rest_framework import status, generics
 from accounts.serializers.user_serializer import UserSerializer
 from rest_framework.permissions import AllowAny
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 
 class UserCreate(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -26,7 +24,7 @@ class UserCreate(generics.CreateAPIView):
             user = User.objects.get(username=request.data['username'])
             user.set_password(request.data['password'])
             user.save()
-            return HttpResponseRedirect(reverse('accounts:token_obtain_pair'))
+            return Response({'status': 'User Created.'}, status=status.HTTP_201_CREATED)
         return response
     
     

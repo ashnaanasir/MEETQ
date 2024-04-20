@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form, FormGroup, FormFeedback, Label, Input } from "reactstrap";
 import axios from "axios";
+import NavBar from "./navbar";
 import { CONTACTS_VIEW_URL } from "../constants/APIEndPoints";
 
 class NewContactForm extends React.Component {
@@ -84,8 +85,10 @@ class NewContactForm extends React.Component {
             </head>
             <body class="bg-cGrey3">
               <main>
+                
                 <div className="flex justify-center pt-4 relative">
-                  <div className="w-full max-w-md">
+                <div><NavBar /></div>
+                  <div className="w-full max-w-md mt-16 ml-32">
                     <Form
                       className="bg-white shadow-md rounded-md px-16 pt-8 pb-10 mt-0"
                       onSubmit={(e) => {

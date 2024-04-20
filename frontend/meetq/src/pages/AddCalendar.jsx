@@ -48,6 +48,7 @@ export default function AddCalendar() {
             };
             try {
                 const response = await axios.get(CONTACTS_VIEW_URL, config);
+                console.log(response.data);
                 setContacts(response.data);  // Assuming the API returns an array of contacts
             } catch (error) {
                 console.error('Failed to fetch contacts:', error);
@@ -56,22 +57,21 @@ export default function AddCalendar() {
 
         fetchContacts();
     }, []);  // Empty dependency array to ensure this runs only once on component mount
-
-
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {};
-        data['name'] = calendarName;
-        data['description'] = calendarDescription;
-        data['color'] = '#000000';
-        data['owner'] = '1';  // TODO: Update this to the actual owner ID (logged in user ID
-        data['duration'] = '60'; //TODO: Add duration field to the form
-        data['start_date'] = calendarStart;
-        data['end_date'] = calendarEnd;
-        data['deadline'] = deadline;
-        data['invited_ids'] = invitedUsers;
-        data['owners_available'] = ownersAvailable;
-        data['owners_preferred'] = ownersPreferred;
+        const data = {
+            owner_id: contacts[0]['user'],  // Assuming the owner's ID is known and static, adjust as necessary
+            name: calendarName,
+            description: calendarDescription,
+            start_date: calendarStart ? calendarStart.format("YYYY-MM-DD") : null,
+            end_date: calendarEnd ? calendarEnd.format("YYYY-MM-DD") : null,
+            deadline: deadline ? deadline.format("YYYY-MM-DD") : null,
+            color: "blue",  // Assuming this is static, change if needed
+            duration: 60,  // Assuming this is static, change if needed
+            owners_available: ownersAvailable.map(time => time.format("YYYY-MM-DDTHH:mm:ss[Z]")),
+            owners_preferred: ownersPreferred.map(time => time.format("YYYY-MM-DDTHH:mm:ss[Z]")),
+            invited_ids: invitedUsers.map(Number)  // Assuming these are stored as strings, convert to numbers
+        };
  
         console.log(data);
         try {
@@ -82,7 +82,8 @@ export default function AddCalendar() {
           } catch (error) {
             console.log(error);
           }
-      };
+    };
+
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -155,10 +156,11 @@ export default function AddCalendar() {
                                 </LocalizationProvider>
                             </Grid>
                             <Grid item xs={12}>
-                                {{contacts} && contacts.map((contact) => (
+                                <Typography variant="h6" align="center" gutterBottom color="primary.dark" sx={{ml: 10}}>Contacts</Typography>
+                                {contacts.map((contact) => (
                                     <Grid item xs={2} key={contact.id}>
-                                        <Typography>{contact.name}</Typography>
-                                        <Typography>{contact.id}</Typography>
+                                        <Typography>Name: {contact.first_name}</Typography>
+                                        <Typography>ID: {contact.pk}</Typography>
                                     </Grid>
                                 ))}
                             </Grid>
@@ -167,7 +169,7 @@ export default function AddCalendar() {
                                 required
                                 fullWidth
                                 id="invitedUsers"
-                                label="Invited Users"
+                                label="Invited Users (input their IDs)"
                                 name="invitedUsers"
                                 onChange={(e) => setCurrentContact(e.target.value)}
                                 autoComplete="family-name"

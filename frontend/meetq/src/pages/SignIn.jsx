@@ -27,29 +27,50 @@ const defaultTheme = createTheme({
 export default function SignIn() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({
+        username: "",
+        password: "",
+        detail: ""
+    });
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData();
-        data.append('username', username);
-        data.append('password', password);
-        console.log({
-          username: data.get('username'),
-          password: data.get('password'),
-        });
+        const data = {'username': username, 'password': password };
+
+        console.log(data);
+
         try {
             const response = await axios.post(LOGIN_URL, data);
             localStorage.setItem("access_token", response.data.access);
             localStorage.setItem("refresh_token", response.data.refresh);
-            window.location.href = "/dashboard";
-          } catch (error) {
-            if ((error.response && error.response.data) || error.response.data.detail) {
-                const { username, password } = error.response.data;
-                setUsername(username ? username[0] : '');
-                setPassword(password ? password[0] : '');
+            window.location.href = '/dashboard';
+        } catch (error) {
+            if (error.response && error.response.data) {
+                // Updating error handling logic to update state correctly
+                const newErrors = {
+                    username: "",
+                    password: "",
+                    detail: ""
+                };
+
+                if (error.response.data.username) {
+                    newErrors.username = error.response.data.username[0];
+                }
+
+                if (error.response.data.password) {
+                    newErrors.password = error.response.data.password[0];
+                }
+
+                if (error.response.data.detail) {
+                    newErrors.detail = error.response.data.detail;
+                }
+
+                setErrors(newErrors);
             }
-          }
-      };
+        }
+
+
+    };
 
     return (
         <ThemeProvider theme={defaultTheme}>
